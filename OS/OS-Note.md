@@ -1,4 +1,4 @@
-# C1:应用眼中的操作系统
+# C1:应用眼中的操作系统（1）
 
 - 什么是程序？：
   
@@ -31,6 +31,7 @@
   ```shell
   vim /bin/ls    # 乱码,但可以看到字符串常量
   xxd /bin/ls    # 字节码 ，可以看到文件以'\x7f''ELF'开头
+  ```
 ```
 
 ## ELF文件
@@ -43,7 +44,7 @@
 
   ```shell
   readelf -h <elf file>  #-h显示elf的头部
-  ```
+```
 
 - Program Header
 
@@ -141,4 +142,36 @@ strace -f gcc main.c #可获取子进程的系统调用
 recvmsg(3, {msg_namelen=0}, 0)          = -1 EAGAIN (Resource temporarily unavailable)
 poll([{fd=3, events=POLLIN|POLLOUT}], 1, -1) = 1 ([{fd=3, revents=POLLOUT}])
 ```
+
+
+
+
+
+# 并发：共享内存多线程（1）
+
++ **并发 (Concurrency)** 多个执行流可以不按照一个特定的顺序执行
++ **并行 (Parallelism)**：允许多个执行流同时执行 (多个处理器)
++ **线程**：多个执行流并发/并行执行，并且它们==共享内存==
+  - 两个执行流共享代码和所有全局变量 (数据、堆区)
+  - 线程之间指令的执行顺序是不确定 (*non-deterministic*) 的
+
++ ```c
+  extern int x;
+  int foo() {
+    int volatile t = x;
+    t += 1;
+    x = t;
+  }
+  // foo的代码可以共享，t和x可以共享，但两个线程的寄存器，堆栈是独享的
+  ```
+
++ 不同线程：
+
+  >+ 共享代码：所有线程的代码都来自当前进程的代码
+  >+ 共享数据：全局数据/堆区可以自由引用
+  >+ 独立堆栈：每个线程有独立的堆栈
+
++ atexit()函数
++ `gcc a.c -I.`可以让`#include <threads.h>`也搜索当前目录
++ 
 
