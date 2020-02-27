@@ -151,10 +151,11 @@ poll([{fd=3, events=POLLIN|POLLOUT}], 1, -1) = 1 ([{fd=3, revents=POLLOUT}])
 
 + **并发 (Concurrency)** 多个执行流可以不按照一个特定的顺序执行
 + **并行 (Parallelism)**：允许多个执行流同时执行 (多个处理器)
-+ **线程**：多个执行流并发/并行执行，并且它们==共享内存==
++ **线程**：多个执行流并发/并行执行，并且它们**共享内存**
+  
   - 两个执行流共享代码和所有全局变量 (数据、堆区)
-  - 线程之间指令的执行顺序是不确定 (*non-deterministic*) 的
-
+- 线程之间指令的执行顺序是不确定 (*non-deterministic*) 的
+  
 + ```c
   extern int x;
   int foo() {
@@ -173,5 +174,67 @@ poll([{fd=3, events=POLLIN|POLLOUT}], 1, -1) = 1 ([{fd=3, revents=POLLOUT}])
 
 + atexit()函数
 + `gcc a.c -I.`可以让`#include <threads.h>`也搜索当前目录
-+ 
++ `__thread char *base` : thread-local 变量，属于每个thread自己独享，但是名字相同可以引用的变量
+
++ 为每个线程分配8MiB的内存
+
++ **原子性atomicity**
+
+  >+ C代码
+  >  - 编译器优化 → 顺序的丧失
+  >+ 二进制文件
+  >+ 处理器执行
+  >  - 中断/并行 → 原子性的丧失
+  >  - 乱序执行 → 可见性的丧失
+
+# 并发：共享内存多线程（２）
+
++ **程序＝有限状态机**
+
+  >+ <img src="./pic/1.png" style="zoom: 67%;" />
+  >
+  >+ 应用１: time travel debugging
+  >+ 应用2 : record & replay
+
++ 在gdb中，用``！``来运行外部命令: `gdb !cat /proc/1`;
+
++ **并发程序的状态机模型**:
+
+  >+ <img src="./pic/2.png" style="zoom:67%;" />
+  >
+  >+ **Perterson算法**：两人互斥
+  >
+  >>+ 想上厕所的人:
+  >>
+  >>> 1. 首先举起有自己名字的旗子 
+  >>> 2. 挂上有对方名字的牌子；后挂的牌子会覆盖先前的 
+  >>> 3. 环顾四周，当对方没有举旗或牌子上是自己名字的时候，进入 WC
+  >>> 4. 出 WC 时放下旗子
+  >>
+  >>+ ```c
+  >>  int turn = T1, x = 0, y = 0;
+  >>  void thread1() {
+  >>  [1] x = 1; turn = T2;
+  >>  [2] while (y && turn == T2) ;
+  >>  [3] // critical section
+  >>  [4] x = 0;
+  >>  }
+  >>  void thread2() {
+  >>  [1] y = 1; turn = T1;
+  >>  [2] while (x && turn == T1) ;
+  >>  [3] // critical section
+  >>  [4] y = 0;
+  >>  }
+  >>  //假设：机器每次原子地执行一条代码，内存访问立即可见
+  >>  ```
++ 分析：
+
+  > + 状态表示：(PC1,PC2,x,y,turn)
+  > + 初始状态：(1,1,0,0,T1)
+  > + 每一步可以不确定地选择一个线程执行一行代码
+  > + 状态空间是有限的：5×5×2×2×2, 但如果算法正确，有些状态应该是不可达的,例如 (3,3,x,y,t)
+
+<img src="./pic/3.png">
+
++ 若处理器能交换不同变量的内存访问，则该算法违背了safety
 
