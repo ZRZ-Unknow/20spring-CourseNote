@@ -30,9 +30,22 @@
   >
   >  >+ 从不同角度对同一事物的KR是不一样的，（盲人摸象）
   >  >
-  >  >
+
+# lecture 2
+
++ **Knowledge Acquisition（获得）**
+
+  >+ 从source of knowledge中搬到sink、知识库中
+
++ **Knowledge Base(KB)**:
+
+  >+ 分为TBox与ABox，类似于数据库column与每一行的概念，后者是instance
+  >
+  >+ 描述逻辑，
 
 # Word
+
+operationa
 
 sound reasoning、unsound reasoning
 
