@@ -1,4 +1,4 @@
-# lecture1:绪论
+# Chapter1:绪论
 
 + 参考书目:sweat_smile:
 
@@ -54,7 +54,7 @@
 
   + 
 
-# lecture2:模型评估和选择
+# Chapter2:模型评估和选择
 
 ### 评估方法
 
