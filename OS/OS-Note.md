@@ -242,3 +242,117 @@ poll([{fd=3, events=POLLIN|POLLOUT}], 1, -1) = 1 ([{fd=3, revents=POLLOUT}])
 
 + 若处理器能交换不同变量的内存访问，则该算法违背了safety
 
+
+
+# 并发控制(1)：互斥
+
+### 互斥mutual exclusion
+
+```c
+typedef struct {
+  ...
+} lock_t;
+void lock(lock_t *lk);   // 试图获得锁的独占访问，成功获得后返回
+void unlock(lock_t *lk); // 释放锁的独占访问
+```
+
+- 在任何线程调度 (线程执行的顺序) 下
+  - 若某个线程持有锁 (`lock(lk)` 返回且未释放)
+  - 则任何其他线程的 `lock(lk)` 都不能返回 
+
++ 状态机的视角
+  + `lock` 返回会进入 “locked” 状态; `unlock` 会清除该状态
+  + 初始状态 $s_0$ 不能到达两个线程都进入 locked 的状态 
+
++ Perterson算法使用load\store在现代处理器中会由于乱序执行而导致错误
++ 一条 `add` 可以看成 `t = load(x); t++; store(x, t)`
+
+- “状态机每一步选择一个线程执行一条指令” 是错误的假设
+- 不经意的编译器/处理器乱序
+- 看起来 “原子” (不可分割) 的一条指令并不原子
+
+### 硬件上实现互斥
+
++ 将load->if->store合成一个指令
+
+  + 一条不可分割的指令，完成：
+
+    - 一次共享内存的 load
+    - 向同一个共享内存地址的 store
+    - 以及一些线程 (处理器) 本地的计算
+
+  + 在多处理器上，原子操作保证：
+  + 原子性: load/store 不会被打断
+    + 顺序：线程 (处理器) 执行的乱序只能不能越过原子操作
+    + 多处理器之间的可见性：若原子操作 A发生在 B 之前，则 A 之前的 store 对 B 之后的 load 可见
+
+### 自旋锁
+
+```c
+int table = KEY;
+void lock() {
+  while (1) {
+    int got = xchg(&table, NOTE);
+    if (got == KEY) break;
+  }
+}
+void unlock() {
+  xchg(&table, KEY)
+}
+```
+
+```c
+int locked = 0;
+void lock()   {
+  while (xchg(&locked, 1)) ;
+}
+
+void unlock() {
+  xchg(&locked, 0);
+}
+```
+
++ LR/SC:
+
+  Load Reserved
+
+  1. 完成 `load(x, v)`
+  2. 在处理器上标记内存 x 被 “reserved” (盯上你了)
+     - 之后可以自由执行几乎任何线程本地的计算
+     - 但一旦其他处理器写入 `x`，或当前处理器发生中断/异常，reserved 的状态就失效
+
+  Store Conditional
+
+  1. 尝试完成 store(x, v)
+     - 如果 x 依然处于 “reserved” 状态
+       - store 成功，返回 0
+     - 否则 store 失败 (包括 store 过程中 reserved 失效)，返回 1
+
+  ```c
+  void do_lrsc(){
+       while (1) {
+  [1]    t = lr(x);
+  [2]    t = f1/f2(t); // 不同线程可以执行不同操作
+  [3]    if (sc(x, t) == SUCC) {
+  [4]      break;
+         }
+       }
+  }
+  ```
+
++ 只要 lr/sc 满足顺序/可见性/原子性，lr 到 sc 之间的区域就是原子的！
+
+- 用原子的 load/store 实现了一段代码的原子性 (精妙)
+  - 偶尔会失败，提供 abort 机制
+
+### 数据竞争
+
+![](pic/Screenshot from 2020-03-02 15-47-39.png)
+
+如果程序没有数据竞争 (race-free)，那么： 
+
+- 两个来自不同线程对同一段内存的访问 (至少有一个是 store) 之间必定有原子操作
+  - load/store, store/load, store/store
+- 原子操作保证了
+  - 顺序
+  - 可见性

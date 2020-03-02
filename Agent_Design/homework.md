@@ -44,4 +44,4 @@ def utility_based_agent():
 
 ### 2.2
 
-![](/pic/2-2.jpg)
+![](pic/2-2.jpg)
