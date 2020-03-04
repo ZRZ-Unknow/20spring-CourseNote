@@ -64,9 +64,35 @@
 
 + ![image-20200227231035320](pic\image-20200227231035320.png)
 
+# lecture3
+
+### knowledge acquisition 到representation的过程
+
++ Term extraction:
+  + 包含concept names,role names,individuals
+  + 是relevant，domain-dependent领域相关的
+  + 不同的term颗粒度不同：如animal和cat
++ Grouping:
+  + 分组
+  + A key slogan: to determine which terms to care about
+    + context sensitive:我们要怎样的应用？
+    + interest relative：应用需要什么？应用的audience是谁？
++ Normalise Terms:
+  + 规范化，如单复数、语法上的form、spelling(名词、形容词)
+  + 把concept name的首字母大写，role names的首字母小写，individual全部小写
++ Organise Terms:
+  + General和specific，反义词，对应的词
+  + definition:用来描述一个term的一个陈述
+    + extensional的方式：列举出term中的所有元素
+    + intensional的方式：使用genus-differentia pattern，也就是说： giving the next more general term (genus) plus differentiating features for this term and its siblings ,如：恒温动物是一个有机体，维持它身体在一个恒定的温度
++ $\mathcal{EL}$中的concept对应$\mathcal{ALL}$中的class
+
++ protege的使用：动手实践
+
+
 # Word
 
-operationa
+interlude(插入)
 
 sound reasoning、unsound reasoning
 
