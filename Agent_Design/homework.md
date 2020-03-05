@@ -40,8 +40,47 @@ def utility_based_agent():
 
 ### 2.1
 
-![](pic/2-1.jpg)
+令$X,Y$表示随机变量生命和水，由题意知：
+
+|  X   |  Y   | P(X,Y) |
+| :--: | :--: | :----: |
+|  0   |  0   |  0.25  |
+|  0   |  1   |   0    |
+|  1   |  0   |  0.25  |
+|  1   |  1   |  0.25  |
+
+则有：$$P(X=1|Y=1)=\frac{P(X=1,Y=1)}{P(Y=1)}=\frac{0.5}{0.5}=1$$
+
+故在给定有水的前提下，火星上有生命的概率为１
 
 ### 2.2
 
-![](pic/2-2.jpg)
++ 我们有：
+
+  $\begin{align} P(S_t|O_{0:t}) &= P(S_t|O_{0:t-1},O_t) \\ &=\frac{P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})}{P(O_t|O_{0:t})}\end{align}$
+
+  而:
+  
+  $\begin{align} P(O_t|O_{0:t-1}) &= \frac{P(O_{0:t})}{P(O_{0:t-1})} \\ &= \frac{\sum_i^N{\alpha_t(i)}}{\sum_i^N{\alpha_{t-1}(i)}}\end{align}$
+  
+  由前向概率算法，此式可算出，从而得到
+  
+  $P(S_t|O_{0:t})\varpropto P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})$
+
+
+
++ 由观测独立性假设：$P(O_t|S_t,O_{0:t-1})=P(O_t|S_t)$,
+
+  再由全概率公式：
+  
+  $\begin{align} P(S_t|O_{0:t-1}) &= \sum_{s_{t-1}} {P(S_t|S_{t-1},O_{0:t-1})P(S_{t-1}|O_{0:t-1})} \\ &= \sum_{s_{t-1}} {P(S_t|S_{t-1})P(S_{t-1}|O_{0:t-1})} \end{align}$,
+  
+  故$P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})=P(O_t|S_t)\sum_{s_{t-1}} {P(S_t|S_{t-1})P(S_{t-1}|O_{0:t-1})}$.
+  
+
+
+
+### 3.1
+
+### 3.2
+
