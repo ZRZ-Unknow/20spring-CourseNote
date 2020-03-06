@@ -78,3 +78,74 @@
 
 ### 性能度量
 
++ 回归任务常用均方误差：$E(f;D)=\frac{1}{m}\sum_{i=1}^m(f(x_i)-y_i)^2$, 是一个二范式的loss函数
+
++ 分类任务：
+
+  <img src="pic\image-20200306101442952.png" alt="image-20200306101442952" style="zoom:67%;" />
+
+  分类结果混淆矩阵：TruePositive,FalseNegitive
+
+  查准率：预测为正例的里面预测对了的有多少
+
+  查全率：所有为正例的里面预测对了的有多少
+
+  ![image-20200306101614864](pic\image-20200306101614864.png)
+
+  + 基于BEP的性能度量：PR图中，y=x直线与学习器的曲线相交得到的平衡点(break-event point)中，BEP更大的学习器更优
+
+  + F1度量：$F1=\frac{2PR}{P+R}$, 是P和R的调和平均数：$\frac{1}{F1}=\frac{1}{2}(\frac{1}{P}+\frac{1}{R})$.
+
+    <img src="pic\image-20200306103242559.png" alt="image-20200306103242559" style="zoom:67%;" />
+
+  + ![image-20200306103401121](pic\image-20200306103401121.png)
+
+  + ROC与AUC：TPR为所有判为正例中真正例的比例；FPR为所有判断为反例中真反例的比例；
+
+    <img src="pic\image-20200306104857206.png" alt="image-20200306104857206" style="zoom: 80%;" />
+
+  + 代价敏感错误率(cost-sensitive):
+
+    <img src="pic\image-20200306105128476.png" alt="image-20200306105128476" style="zoom:80%;" />
+
+
+
+### 比较检验
+
+统计假设检验(hypothesis test)
+
++ 二项检验(binomal test)
++ t检验
++ 交叉t检验
++ Friedman检验与Nemenyi后续检验
+
+(see page 40-42)
+
+### 偏差与方差
+
+![image-20200306185123512](pic\image-20200306185123512.png)
+
++ 期望输出$\bar f(x)=E_D[f(x;D)]$,即为所有训练集的输出的期望
+
++ $var(x)$是使用样本数相同的不同训练集产生的预测输出的方差
+
++ $bias^2(x)=(\bar f(x)-y)^2$是 **期望输出与真实标记之间的差别**
+
++ 噪声相当于系统误差
+
++ 假设噪声期望为0
+
+  <img src="pic\image-20200306190820843.png" alt="image-20200306190820843" style="zoom:80%;" />
+
+  
+
+# Chracter3:线性模型
+
+### 线性回归
+
++ 基本形式:$f(x)=w^Tx+b$
++ 通过最小化均方误差来求解(最小二乘法)
+  + $(w^*,b^*)=argmin_{(w,b)} \sum_{i=1}^m(f(x_i)-y_i)^2=||w^Tx+b-y||_2^2$.
+  + 直接求导可的最优解
+  + <img src="pic\image-20200306192250509.png" alt="image-20200306192250509" style="zoom:67%;" />
+
