@@ -47,7 +47,7 @@ def utility_based_agent():
 |  0   |  0   |  0.25  |
 |  0   |  1   |   0    |
 |  1   |  0   |  0.25  |
-|  1   |  1   |  0.25  |
+|  1   |  1   |  0.5   |
 
 则有：$$P(X=1|Y=1)=\frac{P(X=1,Y=1)}{P(Y=1)}=\frac{0.5}{0.5}=1$$
 
@@ -57,28 +57,28 @@ def utility_based_agent():
 
 + 我们有：
 
-  $\begin{align} P(S_t|O_{0:t}) &= P(S_t|O_{0:t-1},O_t) \\ &=\frac{P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})}{P(O_t|O_{0:t})}\end{align}$
-
+  $$
+  \begin{align} P(S_t|O_{0:t}) &= P(S_t|O_{0:t-1},O_t) \\ &=\frac{P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})}{P(O_t|O_{0:t})}\end{align}
+  $$
   而:
-  
-  $\begin{align} P(O_t|O_{0:t-1}) &= \frac{P(O_{0:t})}{P(O_{0:t-1})} \\ &= \frac{\sum_i^N{\alpha_t(i)}}{\sum_i^N{\alpha_{t-1}(i)}}\end{align}$
-  
+  $$
+  \begin{align} P(O_t|O_{0:t-1}) &= \frac{P(O_{0:t})}{P(O_{0:t-1})} \\ &= \frac{\sum_i^N{\alpha_t(i)}}{\sum_i^N{\alpha_{t-1}(i)}}\end{align}
+  $$
   由前向概率算法，此式可算出，从而得到
-  
-  $P(S_t|O_{0:t})\varpropto P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})$
+  $$
+  P(S_t|O_{0:t})\varpropto P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})
+  $$
 
 
 
 + 由观测独立性假设：$P(O_t|S_t,O_{0:t-1})=P(O_t|S_t)$,
-
   再由全概率公式：
-  
-  $\begin{align} P(S_t|O_{0:t-1}) &= \sum_{s_{t-1}} {P(S_t|S_{t-1},O_{0:t-1})P(S_{t-1}|O_{0:t-1})} \\ &= \sum_{s_{t-1}} {P(S_t|S_{t-1})P(S_{t-1}|O_{0:t-1})} \end{align}$,
-  
+  $$
+  \begin{align} P(S_t|O_{0:t-1}) &= \sum_{s_{t-1}} {P(S_t|S_{t-1},O_{0:t-1})P(S_{t-1}|O_{0:t-1})} \\ &= \sum_{s_{t-1}} {P(S_t|S_{t-1})P(S_{t-1}|O_{0:t-1})} \end{align}
+  $$
   故$P(O_t|S_t,O_{0:t-1})P(S_t|O_{0:t-1})=P(O_t|S_t)\sum_{s_{t-1}} {P(S_t|S_{t-1})P(S_{t-1}|O_{0:t-1})}$.
   
-
-
+  
 
 ### 2.3
 
