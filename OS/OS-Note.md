@@ -362,14 +362,40 @@ void unlock() {
 
 # C2:硬件眼中的操作系统
 
-+ Firmware 会加载启动盘第一个扇区到 `0x7c00` 内存位置
++ 使用工具：
+
+  + ld (链接器), as (汇编器)
+  + ar (静态库打包), objcopy (目标文件解析)
+  + 其他大家会用到的工具: nm(查看符号), strings(查看字符串常量), size, objdump, readelf, ...
+
++ Firmware ，把用户数据加载到内存。会加载启动盘第一个扇区到 `0x7c00` 内存位置
 
 + ```makefile
   make -nB \  #编译但不运行，把编译的命令都打印出来
-    | grep -ve '^\(\#\|echo\|mkdir\|make\)' \
-    | sed "s#$AM_HOME#\$AM_HOME#g" \
-    | sed "s#$PWD#.#g" \
+    | grep -ve '^\(\#\|echo\|mkdir\|make\)' \  #把无关命令去掉
+    | sed "s#$AM_HOME#\$AM_HOME#g" \ #把AM_HOME变量替换成字符串AM_HOME
+    | sed "s#$PWD#.#g" \  #把当前目录替换成点
     | vim -
   ```
 
-+ 
+  + `make -nB` (RTFM)
+  + grep: 文本过滤，省略了一些干扰项
+    - echo (提示信息)
+    - mkdir (目录建立)
+    - make (sub-goals)
+  + sed: 让输出更易读
+    - 将绝对路径替换成相对路径
+  + vim: 更舒适的编辑/查看体验
+  + 在vim里`:%s/ /\r  /g`:把所有空格替换成换行
+
++ make run smp=4：启动4个处理器
+
++ ```c
+  int main(const char *args); //声明
+  static void call_main(const char *args) {
+    _halt(main(args));
+  }  //main函数的wrapper
+  ```
+
+
+
