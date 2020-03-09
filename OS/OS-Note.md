@@ -399,3 +399,126 @@ void unlock() {
 
 
 
+# 并发：并发控制(2)：互斥
+
+### 操作系统是个状态机
+
++ thread-os-mp.c：多处理器的线程实现：
+
+  + 每个 CPU 有自己的 `struct cpu_local`
+
+    - 包含当前 CPU 上正在运行 task 的指针
++ 每个 task
+  
+  - 死循环：获得锁 → 打印信息 → 释放锁
+  + 程序运行时
+    - 每个处理器独立执行、独立响应中断
+    - 在中断到来时，保存寄存器现场 (的指针)，切换到下一个 task 执行
+      - 每个 task 在编号为 `tid % _ncpu()` 的 CPU 上执行
+
+
+
+### 操作系统中的自选锁
+
++ 存在BUG：一段时间上几乎总是同一个线程获得锁
+
+  + 对于持有锁的处理器，中断大概率出现在 `printf` 中，因为printf的时间很长，若中断出现切换到其他处理器，其他处理器仍在lock死循环中
+  + 故：获得自旋锁的线程 (处理器) 不应被中断，否则将会导致大量其他线程 CPU 浪费在自旋上
+  + 应该在lock后关闭中断
+
++ 中断的原子性/顺序
+
+  - 关闭中断后，操作系统上的程序
+
+    - 独占处理器执行
+    - 不会被打断
+
+  - `asm volatile` 汇编保证编译器不会调换指令顺序
+
+  - 操作系统上的互斥实现1：关中断+自旋
+
+    ```c
+    void spin_lock(spinlock_t &lk) {
+      cli();  //关中断
+      while (atomic_xchg(&lk->locked, 1)) ;
+    }
+    
+    void spin_unlock(spinlock_t &lk) {
+      atomic_xchg(&lk->locked, 0);
+      sti();  //开中断
+    }
+    ```
+
+    bug：
+
+    ```c
+    void foo() {
+      spin_lock(&lock_a);  //关中断
+      spin_lock(&lock_b);  //关中断
+      spin_unlock(&lock_b); //开中断
+      spin_unlock(&lock_a);  //????
+    }
+    
+    void on_interrupt(_Event *ev, _Context *ctx) {  //在中断处理函数中调用foo
+      assert(_intr_read() == 0);
+      foo();
+      assert(_intr_read() == 0); // 此时中断应该关闭
+    }
+    ```
+
+  - 正确的实现
+
+    - 在线程第一次 lock 时保存中断状态 FL_IF in %rflags，关闭中断
+    
+    + 此后线程独占 CPU 执行，将不会被切换
+    
+  + 在线程最后一次 unlock 时恢复保存的中断状态
+    
+    + ？？？flags 栈应该保存在何处：锁、线程、cpu?
+  - bug2：Reentrance重入
+  
+    ```c
+  // It's not a bug, it's a feature!
+    lock(&lk);  //此时lk是1
+  lock(&lk);  //此时lk和1交换，仍是1，即另一个处理器持有锁的假象，造成死锁
+    printf(...);
+  unlock(&lk);
+    unlock(&lk);
+    ```
+  
+
+
+
+### xv6自旋锁实现
+
++ make qemu运行xv6
+
+### 互斥锁实现
+
+```c
+void mutex_lock(mutexlock_t *lk) {
+  int acquired = 0;
+  spin_lock(&lk->spinlock);
+  if (lk->locked != 0) {
+    enqueue(lk->wait_list, current);
+    current->status = BLOCKED;
+  } else {
+    lk->locked = 1;
+    acquired = 1;
+  }
+  spin_unlock(&lk->spinlock);
+  if (!acquired) yield(); // 主动切换到其他线程执行
+}
+
+void mutex_unlock(mutexlock_t *lk) {
+  spin_lock(&lk->spinlock);
+  if (!empty(lk->wait_list)) {
+    struct task_t *task = dequeue(lk->wait_list);
+    task->status = RUNNABLE; // 唤醒之前睡眠的线程
+  } else {
+    lk->locked = 0;
+  }
+  spin_unlock(&lk->spinlock);
+}
+```
+
