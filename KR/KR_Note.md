@@ -86,8 +86,40 @@
     + extensional的方式：列举出term中的所有元素
     + intensional的方式：使用genus-differentia pattern，也就是说： giving the next more general term (genus) plus differentiating features for this term and its siblings ,如：恒温动物是一个有机体，维持它身体在一个恒定的温度
 + $\mathcal{EL}$中的concept对应$\mathcal{ALL}$中的class
-
 + protege的使用：动手实践
+
+
+
+
+
+# lecture4
+
++ Semantic Web语义网（第3代网页的一个理想代表）：a platform for distributed applications and sharing (linking) data
+  + RDF：由三元组主语（个体）、谓语、宾语（个体）组成，provides uniform syntactic structure for data 
+  + OWL：和RDF的区别：知识图谱一般用RDF表示，而OWL里有TBOX ，provides machine readable schemas (ontologies) 
+  + SPARQL:一种搜索语言
+
++ ontology：A model of (some aspect of) the world
+  +  Introduces vocabulary relevant to domain 
+  +  Specifies meaning (semantics语义学上) of terms 
+  +  Formalised using suitable logic 适合的逻辑语言
++ 描述逻辑比一阶逻辑语法更简洁，是可决定的，且低复杂度
++ DL Knowledge Base (KB) consists of two parts: –
+  + Ontology (aka TBox) axioms define terminology (schema)
+  + Ground facts (aka ABox) use the terminology (data)
+  + <img src="pic\image-20200310144306306.png" alt="image-20200310144306306" style="zoom:67%;" />
+  + <img src="pic\image-20200310144501219.png" alt="image-20200310144501219" style="zoom:67%;" />
+  + 
+
+
+
+
+
+
+
+
+
+
 
 
 # Word
