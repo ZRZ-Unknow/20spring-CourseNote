@@ -155,3 +155,32 @@ def utility_based_agent():
 + 极大似然估计的一个重大缺陷是当数据集足够小时，使得某些事件不能被观测到，则会认为其发生的概率为0。
 + 贝叶斯学习的优点有：用所有假说做预测，而不是使用单个“最好”的假说，可归约为概率推理，缺点是需要大规模求和或积分。
 
+
+
+### 2.8
+
+对数似然为：
+$$
+\begin{align}
+\mathcal{l}(m,b,\sigma^2)&=ln\mathcal{N}(x_{1:n}|m,b,\sigma^2)\\
+&=\sum_{j=1}^n ln(\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x_j-my_j-b)^2}{2\sigma^2}))\\
+&=n(-ln\sqrt{2\pi}-ln\sigma)-\sum_{j=1}^{n}\frac{(x_j-my_j-b)^2}{2\sigma^2}
+\end{align}
+$$
+
+对$m,b,\sigma$分别求偏导令其为0：
+$$
+\begin{align}
+&\frac{\partial l}{\partial m}=-\sum_{j=1}^n\frac{1}{\sigma^2}(my_j+b-x_j)y_j=0\\
+&\frac{\partial l}{\partial b}=-\sum_{j=1}^n\frac{1}{\sigma^2}(my_j+b-x_j)=0\\
+&\frac{\partial l}{\partial \sigma}=-\frac{n}{\sigma}+\sum_{j=1}^n\frac{1}{\sigma^3}(my_j+b-x_j)^2=0
+\end{align}
+$$
+解得：
+$$
+\begin{align}
+&m^*=\frac{n\sum_{j=1}^nx_jy_j-\sum_{j=1}^nx_j\sum_{j=1}^ny_j }{n\sum_{j=1}^ny_j^2-(\sum_{j=1}^ny_j)^2}\\
+&b^*=\frac{\sum_{j=1}^nx_j}{n}-\frac{\sum_{j=1}^ny_j(n\sum_{j=1}^nx_jy_j-\sum_{j=1}^nx_j\sum_{j=1}^ny_j)}{n(n\sum_{j=1}^ny_j^2-(\sum_{j=1}^ny_j)^2)}\\
+&\sigma^*{^2}=\frac{1}{n}\sum_{j=1}^n(x_j-m^*y_j-b^*)^2
+\end{align}
+$$
