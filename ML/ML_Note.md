@@ -167,6 +167,54 @@
   + 可得到类别的近似概率
   + 容易优化，可用许多数值优化算法
 
-+ 似然函数： $P(Y|X)=\prod_{i=1}^n{n}p(y_i|x_i)$ ,取对数
++ 解得$p(y=1|x)=\frac{e^{w^Tx+b}}{1+e^{w^Tx+b}},p(y=0|x)=\frac{1}{1+e^{w^Tx+b}}$.
 
++ y的分布列为$P(Y|X)=p_1^y\times (1-p_1)^{1-y}$.(伯努利分布)
+
++ 令$w^Tx+b=\beta^Tx$，似然函数： $L(\beta)=L(\beta;X_1,\cdots,X_n)=\prod_{i=1}^np(y_i|x_i)$ ,取对数，得到
+$$
+  \begin{align}
+  L(\beta)&=\sum_{i=1}^ny_iln(p_1)+(1-y_i)ln(1-p_1)\\
+  &=\sum_{i=1}^n(y_i\beta^Tx-ln(1+e^{\beta^Tx}))
+  \end{align}
+  $$
+  最大化对数似然，等价于最小化：
+  $$
+  \mathcal{l}(\beta)=\sum_{i=1}^n(-y_i\beta^Tx+ln(1+e^{\beta^Tx}))
+  $$
   ![image-20200313110719852](pic\image-20200313110719852.png)
+
++ 最优化方法：梯度下降与牛顿法
+
+  + 将$f(x)$泰勒展开：
+    $$
+    f(x)=f(x_k)+\nabla f(x_k)^T(x-x_k)+\frac{1}{2}(x-x_k)^T\nabla^2f(x_k)(x-x_k)
+    $$
+    由一阶条件知其一阶导数为0:
+    $$
+    \nabla f(x_k)^T+\nabla^2f(x_k)(x-x_k)=0\\
+    x=x_k-\nabla^2f(x_k)^{-1}\nabla f(x_k)
+    $$
+    得到迭代公式
+
+    ![image-20200313181937803](pic\image-20200313181937803.png)
+
+### 线性判别分析(Linear Discriminant Analysis)
+
++ 给定训练样例集，设法将样例投影到一条直线上，使得同类样例的投影点尽可能接近，异类的尽可能远离
+
++ <img src="pic\image-20200313192618233.png" alt="image-20200313192618233" style="zoom:80%;" />
+
+  <img src="pic\image-20200313192742456.png" alt="image-20200313192742456" style="zoom:80%;" />
+
+  <img src="pic\image-20200313192808679.png" alt="image-20200313192808679" style="zoom:80%;" />
+
+  拉格朗日乘子：
+  $$
+  \min l(w,\lambda)=-w^TS_bw+\lambda(w^TS_ww-1)\\
+  \text{微分:}-S_bw+\lambda S_ww=0\\
+  w^TS_ww-1=0\\
+  S_bw=(u_0-u_1)((u_0-u_1)^Tw),\text{后者是个标量，所以其方向为}u_0-u_1
+  $$
+  
+
