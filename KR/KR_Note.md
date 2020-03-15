@@ -95,29 +95,33 @@
 # lecture4
 
 + Semantic Web语义网（第3代网页的一个理想代表）：a platform for distributed applications and sharing (linking) data
-  + RDF：由三元组主语（个体）、谓语、宾语（个体）组成，provides uniform syntactic structure for data 
-  + OWL：和RDF的区别：知识图谱一般用RDF表示，而OWL里有TBOX ，provides machine readable schemas (ontologies) 
-  + SPARQL:一种搜索语言
-
-+ ontology：A model of (some aspect of) the world
+  
+  + Web1.0: 公司发布，data之间存在一定的关联，用户只是可读模式
+  + Web 2.0: B2B，B2C，允许用户之间产生交互行为，用户可以“创造”出联系，可读可写
++ Web 3.0：知识和信息不再以自然语言形式存储，而是以实体形式，将结构化的知识上传到网络来，构成一个广泛意义上的巨大的网络
+  
+  + RDF：resource description framework 资源描述框架，由三元组主语（个体）、谓语、宾语（个体）组成，描述个体与个体的联系，可以理解成ABOX，provides uniform syntactic structure for data 
+  + OWL：基于DL描述逻辑，和RDF的区别：知识图谱一般用RDF表示，而OWL里有TBOX (整体性的知识，与个体无关系，ABOX反之)，provides machine readable schemas (ontologies) 
+  + SPARQL:一种搜索语言，关系型数据库一般用SQL进行查询，RDF的数据都是以图形式存储的，它的查询语言使用的是SPARQL。
+     一条SPARQL查询，其核心是对于一组变量及其之间关系的描述，构成了一种带有变量的图模式，与SQL类似，SPARQL查询可以返回一条或多条结果，每条结果包含的是对上述每个变量的一个绑定-指明了该变量与一个RDF术语之间的对应关系。
+  
++ ontology：A model of (some aspect of) the world 对世界的建模 
   +  Introduces vocabulary relevant to domain 
   +  Specifies meaning (semantics语义学上) of terms 
   +  Formalised using suitable logic 适合的逻辑语言
+  
 + 描述逻辑比一阶逻辑语法更简洁，是可决定的，且低复杂度
+
++ Web Ontology Language OWL:
+
+  + 一种本体书写语言，有API，开发环境，推理系统等，基于描述逻辑
+
 + DL Knowledge Base (KB) consists of two parts: –
   + Ontology (aka TBox) axioms define terminology (schema)
-  + Ground facts (aka ABox) use the terminology (data)
+  + Ground facts (aka ABox) ，use the terminology (data)
   + <img src="pic\image-20200310144306306.png" alt="image-20200310144306306" style="zoom:67%;" />
   + <img src="pic\image-20200310144501219.png" alt="image-20200310144501219" style="zoom:67%;" />
-  + 
-
-
-
-
-
-
-
-
+  + 表示John has-child Mary，Mary是John的孩子
 
 
 
