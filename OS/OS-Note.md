@@ -492,6 +492,9 @@ void unlock() {
 ### xv6自旋锁实现
 
 + make qemu运行xv6
++ qemu选项：
+  + `-nographic` 不启动图形界面 (所以做操作系统实验其实并不需要任何图形界面……)
+  + `-S` 使 QEMU 在 CPU Reset 之后暂停不再执行指令
 
 ### 互斥锁实现
 
@@ -521,4 +524,245 @@ void mutex_unlock(mutexlock_t *lk) {
   spin_unlock(&lk->spinlock);
 }
 ```
+
+
+
+# 并发数据结构
+
++ 链表：
+
+  + ```c
+    static inline void list_check(node_t *node) {
+      assert(node == node->prev->next); // circular list's offer
+      assert(node == node->next->prev);
+    }
+    //良好的remove实现
+    void list_remove(node_t *node) {
+      node_t *prev = node->prev;
+      node_t *next = node->next;
+      assert(prev != next // defensive
+          && node != prev
+          && node != next); // more checks than necessary
+                            // may find bugs in other parts of the system
+      prev->next = next;
+      next->prev = prev; // possibly prev == next
+      list_check(prev); list_check(next);
+    }
+    ```
+
+  + **嵌入在其他数据结构中的双向循环链表**
+
+    ```c
+    struct list_head {
+      struct list_head *next, *prev;
+    };
+    struct task {
+      ...
+      struct list_head wait_queue;
+      ...
+    };
+    //得到task的首地址
+    #define list_entry(ptr, type, member) \
+      ((type *) \
+        ( (char *)(ptr) - (uintptr_t)(&((type *)0)->member) ) \
+      )
+    //指向wait_queue的指针减去把０作为type类型转成整数
+    // ptr to struct list_head
+    struct task *task = list_entry(ptr, struct task, wait_queue);
+    ```
+
+    
+
+### malloc/free
+
+shell脚本文件:vi mtrace.sh
+
+```shell
+#!/bin/bash
+
+trace() {
+  # ltrace outputs to stderr, so discard stdout
+  # -f: trace threads/sub-processes
+  # -e 'malloc+free-@libc.so*': only trace malloc/free
+  ltrace -f -e 'malloc+free-@libc.so*' $@ > /dev/null
+}
+
+trace $@ 2>&1 # move stderr to stdout
+```
+
+添加权限：`chmod u+x mtrace.sh`,就可以用./mtrace.sh或sh mtrace.sh运行脚本。
+
+```shell
+./mtrace.sh gcc sum.c | grep malloc
+```
+
+### Fast Path
+
++ 大内存分配后要使用，不会太频繁，不太可能所有线程都要挤着分配大内存，而小内存是可能的
++ 策略：小内存分配在线程本地分配，使用简单的数据结构
++ **SLAB**:　
+  + 设置常用的内存大小如:4B,8B,24B等
+  + 在一个４KB页面上存储了一些元数据如是用于24字节的分配，接着存储了多个24B的对象
+  + 当内存分配请求到来时，根据其大小决定它应该属于多少个字节的SLAB
+  + bitmap 
+  + 将同属于一个字节的slab用链表连接起来，
+
+
+
+### Slow Path
+
++ slab分配失败，执行大内存分配:从全局获得一个新的slab， 线段树
++ ![](pic/Screenshot from 2020-03-16 13-37-42.png)
+
++ 
+
+
+
+
+
+# 并发：并发控制(3)：同步
+
+### 同步
+
++ 两个或两个以上随时间变化的量在变化过程中保持一定的相对关系
+
+  + 线程同步 (在某个时间点共同达到一致的状态)
+
++ + 并发
+    + 两个线程各自完成某件事
+
+  + 互斥
+    + 上厕所排好队，一个接一个
+
+  + 同步
+    + 在未来某个约定的时刻，两个线程的执行点互相可知
+    + 通常是先到的线程等待
+
++ volatile变量使编译器对这个变量的读和写都有一条命令
+
++ 生产者－消费者问题
+
+  ```c
+  void consumer_thread() {
+    while (1) {
+      object_t *obj = dequeue(); // spin：队列可能没有元素
+      if (obj) consume(obj);
+    }
+  }
+  void producer_thread() {
+    while (1) {
+      object_t *obj = produce();
+      while (enqueue(obj) != SUCC); // spin: 队列可能空间不足
+    }
+  }
+  //另一种表达：
+  void type1_thread() {
+    while (1) printf("("); // enqueue
+  }
+  void type2_thread() {
+    while (1) printf(")"); // dequeue
+  }
+  ```
+
+### 条件变量
+
++ 同步的本质：当某个条件满足时，线程执行，否则等待
+  + 用一个对象来表示条件的满足/不满足
+    - 条件不满足，随时可以在这个对象上等待
+    - 另一个线程发现条件满足，唤醒一个 (或所有) 正在等待的线程
+
++ 对于一个条件变量 cv：
+  - wait(cv)
+    - 进入睡眠状态，等待 cv 上的事件发生
+  - signal/notify(cv) 💬 私信：走起
+    - 报告 cv 上的事件发生
+    - 如果有线程正在等待 cv，则唤醒其中一个线程
+  - broadcast/notifyAll(cv) 📣 所有人：走起
+    - 报告 cv 上的事件发生
+    - 唤醒全部正在等待 cv 的线程
+
+```c
+void producer_thread() {
+  while (1) {
+    // produce
+    mutex_lock(&mutex);
+    if (count == n) wait(&cv, &mutex); // 等待“有空闲”,wait会把互斥锁释放并等待，当cv满足时重新上锁
+    printf("("); // push
+    count++; signal(&cv);
+    mutex_unlock(&mutex);
+  }
+}
+
+void consumer_thread() {
+  while (1) {
+    mutex_lock(&mutex);
+    if (count == 0) wait(&cv, &mutex); // 等待“有数据”
+    printf(")"); // pop
+    count--; signal(&cv);
+    mutex_unlock(&mutex);
+    // consume
+  }
+}
+```
+
++ 有bug!**需要两个条件变量**,
+
+```c
+empty:count!=n;fill:count!=0;
+P:
+ if(count!=n) wait(empty)
+ print("(");count++;
+ signal(fill)
+C:
+ if(count==0) wait(fill)
+ print("）")；count--;
+ signal(empty)
+     
+//或者把if 改为 while
+```
+
+```c
+//条件变量：无赖
+mutex_lock(&big_lock);
+while (!(cond)) {
+  wait(&cv, &big_lock);
+}
+assert(cond); // 一定为真
+// 其他需要原子性的操作
+mutex_unlock(&big_lock);
+```
+
+### 信号变量
+
+
+
++ 哲学家吃饭问题
+
+  <img src="pic/Screenshot from 2020-03-16 15-33-59.png" style="zoom:80%;" />
+
+  使用条件变量：
+
+  ```c
+  #define cond (empty[lhs] && empty[rhs])
+  
+  void philosopher(int id) {
+    int lhs = (id - 1 + n) % n, rhs = (id + 1) % n;
+    mutex_lock(&mutex);
+    while (!cond) {
+      wait(&cv, &mutex);
+    }
+    assert(cond);
+    empty[lhs] = empty[rhs] = 0;
+    mutex_unlock(&mutex);
+  
+    __philosopher_eat();
+  
+    mutex_lock(&mutex);
+    emtpy[lhs] = empty[rhs] = 1;
+    broadcast(&cv); // 对所有人喊：叉子放回去啦，快看看吧！
+    mutex_unlock(&mutex);
+  }
+  ```
+
+  
 
