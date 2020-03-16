@@ -4,7 +4,4 @@ commit:
 	git commit
 push:
 	git push origin
-all:
-	git add -A
-	git commit
-	git push origin
+all: add commit push
