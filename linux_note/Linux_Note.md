@@ -197,7 +197,44 @@ git config --global credential.helper store
 
   食物会出现在蛇身
 
-## M2_libco
+## L1:pmm
+
+初步构想：
+
+```c
+//每个cpu有一个本地缓存,优先从本地缓存中申请
+kmem_cpu[ncpu];
+struct kmem_cpu{
+    list free_page;//一个链表节点就表示一个slab  8KB
+    list used_page;
+    free_page_num;  //当有页归还时，需要自减
+    used_page_num;
+}
+//每个page 8KB， slab分为 4B,16B,32B,64B,128B,512B,4KB
+typedef union page {
+  struct {
+    spinlock_t lock; // 锁，用于串行化分配和并发的 free
+    int obj_cnt;     // 页面中已分配的对象数，减少到 0 时回收页面
+    list_head list;  // 属于同一个线程的页面的链表
+    ...
+  }; // 匿名结构体
+  uint8_t header[HDR_SIZE], data[PAGE_SIZE - HDR_SIZE];
+} __attribute__((packed)) page_t;
+//维护一个全局的数据结构管理总内存
+struct kmem_global{
+    start,end;
+    page_num;
+    free_page_num;
+    used_page_num;
+    free_page_list;
+    used_page_list;  //?也许可以不用
+}
+//当缓存分配失败是，从总内存中划出1/2页到缓存中，用链表连接，
+//当本地缓存富裕时，将富裕的页面返回到全局内存中
+
+```
+
+
 
 
 
