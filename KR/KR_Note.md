@@ -1,4 +1,4 @@
-# lecture1
+# Week1
 
 + KR 是一个surrogate（替代，代理），不用作用在原事物上而是在这个surrogate上进行推理
 
@@ -31,7 +31,7 @@
   >  >+ 从不同角度对同一事物的KR是不一样的，（盲人摸象）
   >  >
 
-# lecture 2
+# Week2
 
 + **Knowledge Acquisition（获得）**
 
@@ -64,7 +64,7 @@
 
 + ![image-20200227231035320](pic\image-20200227231035320.png)
 
-# lecture3
+# Week3
 
 ### knowledge acquisition 到representation的过程
 
@@ -92,7 +92,7 @@
 
 
 
-# lecture4
+# Week4
 
 + Semantic Web语义网（第3代网页的一个理想代表）：a platform for distributed applications and sharing (linking) data
   
@@ -125,10 +125,42 @@
 
 
 
+# Week5
+
++ 如果要将individual归类为某class，则class一定得有充分必要条件，而仅有必要条件如subclassof则无法判断。
+
++ OWL与FOL的转换：![image-20200317143232442](pic\image-20200317143232442.png)
+
+  ![image-20200317143331953](pic\image-20200317143331953.png)
+
++ KR systems assumptinos:
+
+  + Unique name assumption
+  + Closed domain assumption
+
+  + Minimal models
+  + Closed world assumption: 凡是不能被O导出的都认为是错的
+    + What isn’t entailed by O isn’t true
+  + Open world assumption: 没说的东西，它就有可能对
+    + an axiom can be such that
+      + it’s entailed by O or
+      + it’s negation is entailed by O or
+      + none of the above
+
++ protege里role的functional指只能跟一个值，如hasSex some Female,只能有1个
++ hasChild only Daughter, 表示要是有孩子则只有女儿;如果再加一个hasChild some Son，此时reasoning会成功，因为daughter和son没说互斥,即protege是open world assumption。
++ An axiom pattern is 
+  + a recurring regularity in how axioms are used in an ontology
+  + atomic SubClassOf axioms, i.e. A SubClassOfB where A, B are class names
+
++ Class name用驼峰结构，首字母大写；individual全小写，可以用下划线；property name驼峰结构，首字母小写
++ All classes and individuals have a label, creator, description annotation property（即注释）
 
 # Word
 
 interlude(插入)
+
+formalism: 一个正式的语言,object oriented formalism,面向对象语言
 
 sound reasoning、unsound reasoning
 
