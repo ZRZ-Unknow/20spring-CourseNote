@@ -766,4 +766,68 @@ mutex_unlock(&big_lock);
 
   
 
-d
+# C3:并发Bugs
+
++ 调试公理：
+  + **机器永远是对的**
+  + **未测试代码永远是错的**
++ Fault(bug)->Eroor(程序状态错)->Failure(可观测的结果错)
+  + 只能观察到failure
+
+
+
+### 死锁(deadlock)
+
++ AA-TYPE:
+
+  ```C
+  void normal_code() {
+    spin_lock(&list_lock);
+    spin_lock(&xxx);   //下一行执行后发生中断
+    spin_unlock(&xxx); // ---------+
+  }                          //    |
+  void interrupt_handler() { //    |
+    spin_lock(&list_lock);   // <--+
+    spin_unlock(&list_lock);
+  }
+  ```
+
+  容易解决：`if(holding(lk)) panic();`
+
+  
+
++ ABBA-TYPE:
+
+  ```c
+  void move_obj(int i, int j) {
+    spin_lock(&lock[i]);
+    spin_lock(&lock[j]);
+    arr[i] = NULL;
+    arr[j] = arr[i];
+    spin_unlock(&lock[j]);
+    spin_unlock(&lock[i]);
+  }
+  ```
+
+  - 
+    move_obj本身看起来没有问题
+    
+- 问题是它有一个隐含的 lock ordering 的 requirement
+    - `move_obj(1, 2)`; `move_obj(2, 1)` → 死锁: 进程A获得lock1后，B获得lock2，此后A的lock2和B的lock1形成死锁。
+- 需要严格按照固定的顺序获得所有锁
+
++ 死锁产生的四个必要条件 ([Edward G. Coffman](https://en.wikipedia.org/wiki/Edward_G._Coffman,_Jr.), 1971):
+  - 互斥：一个资源每次只能被一个进程使用
+  - 请求与保持：一个进程请求资阻塞时，不释放已获得的资源
+  - 不剥夺：进程已获得的资源不能强行剥夺
+  - 循环等待：若干进程之间形成头尾相接的循环等待资源关系
+
++ 非死锁并发bug:
+  + 原子性违反(Atomicity Violation)：忘记上锁
+  + 顺序违反(Order Violation) ：忘记同步
+
+### L1 alloc/free测试
+
++ 以概率生成alloc_size
++ 在cpu本地缓存本cpu的alloc 序列，满了就放入一个全局数据结构，其他cpu可以获得从而free
++ 在适当的时候插入delay()
