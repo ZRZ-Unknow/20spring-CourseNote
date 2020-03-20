@@ -335,13 +335,12 @@
   ![image-20200313211109347](pic\image-20200313211109347.png)
 
 + 找出使得似然函数最大的参数
-  + ![image-20200311194454835](D:\Git\20spring-CourseNote\Agent_Design\pic\image-20200311194454835.png)
-  + (概率论复习)
+  + ![image-20200311194454835](pic\image-20200311194454835.png)
   + 步骤：
     + 为数据的似然性写下一个表达式，即参数的函数
     + 写下对数似然关于每个参数的偏导数
     +   推导出使导数为0的参数值
-
+  
 + 多项分布：
   + ![image-20200311195013771](pic\image-20200311195013771.png)
   + ![image-20200311195122770](pic\image-20200311195122770.png)
@@ -351,13 +350,71 @@
 + 给定数据，计算每个假说的概率，并基于这些概率做决策 
 +  用所有假说做预测，而不是使用单个“最好”的假说 
 + 把学习归约于概率推理
-+ 参数学习中的贝叶斯方法：基于假说先验，估计$\theta$的后验分布
-
++ 参数学习中的贝叶斯方法：基于假说先验，估计$\theta$的后验分布，**其实就是MAP**最大后验估计
 + 伽玛函数$\Gamma(n)=(n-1)!$.
 + 贝塔（Beta）分布可以作为二项分布参数的先验分布 
 +  若选贝塔分布作为先验，后验也是贝塔分布
 + 若先验为Beta(𝛼, 𝛽)，观察为𝑜i 如果𝑜i=1，则后验为𝐵eta(𝛼 + 1, 𝛽) ;如果𝑜i=0，则后验为𝐵eta(𝛼, 𝛽 + 1)
 + 狄利克雷（Dirichlet）分布：贝塔分布的广义形式
+
+## TODO：狄利克雷分布和β分布，贝叶斯得分的推导
+
+
+
+### Add:MLE与MAP
+
++ 核心：贝叶斯公式
+  $$
+  P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)}\rightarrow posterior=\frac{likehood*prior}{evidence}
+  $$
+  posterior：通过样本X得到的参数$\theta$的概率，即**后验概率**
+
+  likehood：通过参数$\theta$得到样本X的概率，**似然函数**
+
+  prior：参数$\theta$的先验概率，一般是根据人的先验知识得来的
+
+  evidence：样本X发生的概率，$P(X)=\int p(X|\theta)p(\theta)d\theta$，是各种$\theta$条件下样本X发生的概率的积分或求和
+
++ MLE: Maximum Likelihood Estimation，最大似然估计，是频率学派的估计方法
+
+  + 关于参数$\theta$的似然函数为 $L(\theta|data)$，
+
+  + 理解：概率是给定参数$\theta=(p_1,...p_n)$后，预测即将发生的事件的可能性
+
+    + 如已知硬币正面概率$p_H$和反面概率$p_T$为0.5，这个p就是参数$\theta$。预测抛两次硬币，全部正面朝上的概率。
+    + 即$data=(x_1,x_2)=(H,H)$, $P(HH|\theta)=P(HH|p_H=0.5;p_T=0.5)=p_H\times p_H=0.25$.
+    + $P(HHT|\theta)=p_H^2(1-p_H)$ ，当$p_H=0.66$时似然函数是最大的，即**从现有的数据中看，参数$p_H=0.66$是看起来最“似然”的**。
+    + **似然**就是反过来，已知事件data，求参数$\theta$，使得**在参数$\theta$下，事件data发生的概率是最大的**，即**对某一个参数$\theta$的猜想的概率**
+    + 核心思想：认为当前发生的事件是概率最大的事件
+
+  + 推导：分号只是用来隔离参数,$data=(X_1,...X_n)$。而data是已发生事件，P(data)为1
+    $$
+    L(\theta|data)=P(\theta|data)=\frac{P(data;\theta)}{P(data)}=P(data;\theta)=P_\theta(data)\text{ 表示给定参数下data发生的概率}\\L(\theta|data)=\prod_{i=1}^nP(X_i;\theta),\text{取对数得到对数似然}\\
+    \theta_{MLE}=argmax\text{ }P(\theta|data)=argmax \sum_{i=1}^n\log P(X_i;\theta)
+    $$
+    .
+
++ MAP: Maximum A Posteriori, 最大后验估计，引入了先验概率分布，贝叶斯学派
+
+  + 在MLE中，将$\theta$看做是未知的参数，但它是一个定值，只是这个值未知。即最大似然估计是的函数，其求解过程就是找到使得最大似然函数最大的那个参数。
+
+  + 最大后验估计，将参数$\theta$看成一个随机变量，并在已知样本集data的条件下，估计参数。$\theta$是有概率意义的
+
+  + 推导：
+    $$
+    \theta_{MAP}=argmax\text{ }P(\theta|data)=argmax\text{ }P(data|\theta)P(\theta)
+    $$
+    这里的$P(data|\theta)$和MLE的$P(data;\theta)$只是记法不一样。
+    $$
+    \begin{align}
+    \log P(data|\theta)P(\theta)&=\log P(data|\theta)+\log P(\theta)\\
+    &=\log \prod_{i=1}^nP(X_i|\theta)+\log P(\theta) \\
+    &=\sum_{i=1}^n\log P(X_i|\theta) +\log P(\theta)
+    \end{align}
+    $$
+    可以看到MAP的优化函数只比MLE多了一个$\log P(\theta)$，而$P(\theta)$是由先验分布给出的，通常是$\beta$分布或高斯分布
+
+  + 例如：对于投硬币的例子来看，我们认为（”先验地知道“）$\theta$ 取0.5的概率很大，取其他值的概率小一些。我们用一个高斯分布来具体描述我们掌握的这个先验知识，例如假设 $P(\theta)$ 为均值0.5，方差0.1的高斯函数
 
 ### 非参数化模型的密度估算
 
