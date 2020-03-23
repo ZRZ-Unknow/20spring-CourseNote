@@ -831,3 +831,71 @@ mutex_unlock(&big_lock);
 + 以概率生成alloc_size
 + 在cpu本地缓存本cpu的alloc 序列，满了就放入一个全局数据结构，其他cpu可以获得从而free
 + 在适当的时候插入delay()
+
+
+
+# 虚拟化:进程抽象
+
++ fork()：将状态机做一份拷贝（寄存器现场、数据），两个进程互不相干继续向前执行
+
+  ```c
+  if(fork()==0){
+      //子进程，fork()返回0
+  }
+  else{
+      //父进程，fork()返回父进程的进程号pid
+  }
+  ```
+
+  ```c
+  //fork bomb
+  :(){:|:&};:   # 刚才的一行版本
+  
+  :() {         # 格式化一下
+    : | : &
+  }; :
+  
+  fork() {      # bash: 允许冒号作为标识符……
+    fork | fork &
+  }; fork
+  ```
+
+  ```c
+  #define n 2
+  //此时直接运行./out得到6个hello；但是通过管道重定向到如less后，却打印了8个
+  // .out 2 |wc -l  ->8
+  // 当有管道时printf会把字符写入到libc的一个缓冲区中，
+  int main() {
+    for (int i = 0; i < n; i++) {
+      fork();
+      printf("Hello\n");
+    }
+  }
+  ```
+
+
+
++ execve(filename,argv,env)：
+
+  执行名为filename的程序，传入参数argv和环境变量envp(e)
+
+  ```bash
+  export PS1="> "  #命令行开头变成了> 
+  ```
+
++ _exit()_：
+
+  - 销毁当前状态机，并允许有一个返回值
+  - 子进程终止会通知父进程 (之后的内容)
+
++ exit 的几种写法 (它们是不同的)
+
+  - exit(0) - stdlib.h中声明的 libc 函数
+    - 会调用 `atexit`
+  - _exit(0) \- glibc 的 syscall wrapper
+    - 执行 “exit_group” 系统调用终止整个进程 (所有线程)
+      - 细心的同学已经在 strace 中发现了
+    - 不会调用 `atexit`
+  - syscall(SYS_exit, 0)
+    - 执行 “`exit`” 系统调用终止当前线程
+    - 不会调用 `atexit`
