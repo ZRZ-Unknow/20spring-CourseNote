@@ -148,13 +148,37 @@
       + none of the above
 
 + protege里role的functional指只能跟一个值，如hasSex some Female,只能有1个
+
 + hasChild only Daughter, 表示要是有孩子则只有女儿;如果再加一个hasChild some Son，此时reasoning会成功，因为daughter和son没说互斥,即protege是open world assumption。
+
 + An axiom pattern is 
   + a recurring regularity in how axioms are used in an ontology
   + atomic SubClassOf axioms, i.e. A SubClassOfB where A, B are class names
 
 + Class name用驼峰结构，首字母大写；individual全小写，可以用下划线；property name驼峰结构，首字母小写
-+ All classes and individuals have a label, creator, description annotation property（即注释）
+
++ All classes and individuals hav a label, creator, description annotation property（即注释）
+
+
+
+# Week6
+
+### Competency Questions for ontologies
+
++ What must an ontology be “competent” to do  (answer)? 
+  + The ontology should have the axioms sufficient to answer competence questions
+  + What vegetarian pizzas are there that don’t have olives? 
+  + Implies discriminations of different toppings, vegetable/fish/meat toppings and closure of toppings
+
+
+
+
+
+
+
+
+
+
 
 # Word
 
