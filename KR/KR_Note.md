@@ -104,24 +104,24 @@
   + OWL：基于DL描述逻辑，和RDF的区别：知识图谱一般用RDF表示，而OWL里有TBOX (整体性的知识，与个体无关系，ABOX反之)，provides machine readable schemas (ontologies) 
   + SPARQL:一种搜索语言，关系型数据库一般用SQL进行查询，RDF的数据都是以图形式存储的，它的查询语言使用的是SPARQL。
      一条SPARQL查询，其核心是对于一组变量及其之间关系的描述，构成了一种带有变量的图模式，与SQL类似，SPARQL查询可以返回一条或多条结果，每条结果包含的是对上述每个变量的一个绑定-指明了该变量与一个RDF术语之间的对应关系。
-  
 + ontology：A model of (some aspect of) the world 对世界的建模 
   +  Introduces vocabulary relevant to domain 
   +  Specifies meaning (semantics语义学上) of terms 
   +  Formalised using suitable logic 适合的逻辑语言
-  
 + 描述逻辑比一阶逻辑语法更简洁，是可决定的，且低复杂度
-
 + Web Ontology Language OWL:
 
   + 一种本体书写语言，有API，开发环境，推理系统等，基于描述逻辑
-
 + DL Knowledge Base (KB) consists of two parts: –
   + Ontology (aka TBox) axioms define terminology (schema)
   + Ground facts (aka ABox) ，use the terminology (data)
   + <img src="pic\image-20200310144306306.png" alt="image-20200310144306306" style="zoom:67%;" />
   + <img src="pic\image-20200310144501219.png" alt="image-20200310144501219" style="zoom:67%;" />
   + 表示John has-child Mary，Mary是John的孩子
++ interpretation：一个解释函数，见KR随笔
+  + ![image-20200328095351304](pic\image-20200328095351304.png)
+  + Video-week4-part2
+  + ontology O是consisternt的 如果 存在O的一个model 
 
 
 
@@ -170,9 +170,44 @@
   + What vegetarian pizzas are there that don’t have olives? 
   + Implies discriminations of different toppings, vegetable/fish/meat toppings and closure of toppings
 
++ An axiom pattern 是一个经常出现的关于axiom如何在ontology中使用的模式
 
+  + 最常见的：A subclassof B
 
+  + ![image-20200328105734015](pic\image-20200328105734015.png)
 
+  + partitions pattern：类似与划分，一个元素有n个子类，但某个a只能属于这些子类中的一个
+
+    ![image-20200328110100074](pic\image-20200328110100074.png)
+
+  + ![image-20200328110146278](pic\image-20200328110146278.png)
+
+  + content pattern: 
+
+    + isComponentOf: 是一种组成部分/元素，如把手是车门的组成部分
+      + functional：把把手从车门拿开影响了functional
+      + non-homeomeric：把手和门是两种不同的事物
+      + separable：是可以把把手从车门中拿走
+    + isIngredientOf：一种材料和用这种材料做成的物体，如牛奶isIngredientOf卡布奇诺，面粉isIngredientOf面包
+      + non-functional：牛奶在卡布奇诺的任何地方都有
+      + non-homeomeric：牛奶和卡布奇诺是两种不同的事物
+      + non-separable：不可以把牛奶从卡布奇诺中拿走
+    + isPortionOf：对象的部分isPortionOf对象，如买一些猪肉，这些猪肉是猪肉的一部分; 面包片是面包的一部分
+      + non-functional：这些猪肉可以存在于猪肉的任何位置
+      + homeomeric：都是猪肉
+      + separable：能够砍出一部分猪肉
+    + isSpatialPartOf：一个地方和他周围区域的关系，如南京isSpatialPartOf中国
+      + non-functional
+      + homeomeric
+      + non-separable
+    + isMemberOf：个体和群体的关系：tree-Forest; 
+      + non-functional
+      + homeomeric
+      + non-separable
+
+  + ![image-20200328113543729](pic\image-20200328113543729.png)
+
+  + 
 
 
 
@@ -183,6 +218,8 @@
 # Word
 
 interlude(插入)
+
+mereonomy: 分体学，整体和部分关系的研究
 
 formalism: 一个正式的语言,object oriented formalism,面向对象语言
 
