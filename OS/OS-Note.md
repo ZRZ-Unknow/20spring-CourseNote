@@ -899,3 +899,43 @@ mutex_unlock(&big_lock);
   - syscall(SYS_exit, 0)
     - 执行 “`exit`” 系统调用终止当前线程
     - 不会调用 `atexit`
+
+
+
+# C4:操作系统中的进程
+
+100行的os代码，xv6进程调试
+
+
+
+# 虚拟化:虚存抽象
+
++ 进程执行指令需要代码、数据、堆栈
+
++ 指针可以指向地址空间的合法与非法地址，地址空间由段组成，每个段是地址空间中连续的一段内存，有访问权限
+
++ `pmap`命令：查看进程的地址空间
+
+  + use：`pmap pid`进程号
+
++ ```c
+  /*creates a new mapping in the virtual address space of the calling process
+  prot：可以设置权限：可执行、可读、可写、不能访问；
+  允许将文件中的内容映射到内存中的地址空间，所以进程的代码和数据由mmap搬入内存*/
+  void *mmap(void *addr, size_t length, int prot, int flags,
+             int fd, off_t offset);
+  /*将内存中的映射移除*/
+  int munmap(void *addr, size_t length);
+  // 修改映射权限
+  int mprotect(void *addr, size_t length, int prot);
+  ```
+
++ ```shell
+  gcc a.c  #默认编译成动态链接，
+  gcc -static a.c -o static.out #静态链接
+  file a.c　#查看
+  time gcc a.c , time gcc -static a.c #可以发现后者时间更长
+  ./a.out &　#放入后台执行
+  ```
+
++ 分页机制：字典树
