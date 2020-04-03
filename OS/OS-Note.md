@@ -939,3 +939,71 @@ mutex_unlock(&big_lock);
   ```
 
 + 分页机制：字典树
+
+
+
+# C5:链接与加载
+
+### 静态链接与加载
+
++ 需求：允许引用其他文件
++ 使用 gcc 的 `-Wl,--verbose` 可以将 `--verbose` 传递给 ld
+  - 近距离观察 ld 的行为
+    - ldscript 中各个 section 按照何种顺序 “粘贴”
+    - ctors/dtors (constructors/destructors) 的实现
+      - 我们用过 `__attribute__((constructor))` 
+    - 只读数据和读写数据之间的 padding
+      - `. = DATA_SEGMENT_ALIGN ...`
++ 根据 ELF program header，将文件中指定的部分移动到内存
++ 操作系统在 execve 时完成
+  - 操作系统在内核态调用 mmap
+    - (进程还未准备好时，由内核直接执行 “系统调用”)
+    - 映射好 a.out 代码、数据、堆区、堆栈、vvar, vdso, vsyscall
+
+
+
+### 动态链接与加载
+
++ 需求：如libc.so
+  + 每个程序如果都静态链接，浪费的空间很大
+  + 最好是整个系统里只有一个 libc 的副本
+    - 文件系统里只有一个副本 (libc.so)
+    - 内存里只有一个副本
++ 实现动态加载：
+  + 一：加载纯粹的代码，把代码编译成位置无关的，然后直接把代码mmap进进程的地址空间就行了
+  + 二：需要加载代码和数据，
+  + 三：允许访问其他动态链接库导出的符号（代码/数据）：查表（编译成call *table[foo]）
+
++ PIC+查表实现动态链接
+
+  + > 考虑实际中的动态链接 (共享代码) 的需求
+    >
+    > - main 要调用 libc 中的 printf
+    > - printf 要调用 libfoo 中的 foo
+
+    libld 由操作系统加载 (甩锅成功)
+
+    1. libld 加载 libfoo, 一切顺利
+    2. libld 加载 libc
+       - libc 对 foo 的调用被编译成 `call *libc.tab[FOO]`
+       - libld 调用 `_dl_runtime_resolve` 解析符号，填入 `libc.tab[FOO]`
+    3. libld 完成 main 的初始化
+       - a.out 对 printf 的调用被编译成 `call *a.out.tab[PRINTF]`
+       - libld 解析 printf 的地址，填入 `a.out.tab[PRINTF]`
+
++ GOT(global offset table)：shared object 用来存储动态符号的表格
+
+  - 库函数有
+  - 可执行文件也有
+    - 所以用 file 查看 a.out 和 libc.so 都是 “shared object”
+  - GOT 中储存的数据
+    - `GOT[0]`: `.dynamic` 节的地址
+    - GOT[1] : link map
+      - 用于遍历依赖的动态链接库
+    - GOT[2] :  _dl_runtime_resolve 的地址
+      - `call *GOT[2]` 可以完成符号解析
+    - `GOT[i]`: 程序所需的动态符号地址 (printf, ...)
+
++ 程序可能会引用很多符号，但执行时可能大部分符号都没用到
+
+  + ![image-20200403143817047](pic\image-20200403143817047.png)
