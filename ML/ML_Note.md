@@ -373,7 +373,6 @@ $$
     + 测试时间开销降低，训练时间开销增加，过拟合风险降低，欠拟合风险基本不变
   + 泛化性能后剪枝通常优于预剪枝
   
-
 + **处理连续值的属性**：
   + 基本思路：**连续属性离散化**
     + 二分法：n个属性值可以形成n-1个候选划分，然后将它们当作n-1个离散属性值处理
@@ -411,4 +410,116 @@ $$
 
 
 # Chapter6:支持向量机
+
+### SVM基本型
+
++ 给定训练样本集$D=\{(x_i,y_i)\},y_i\in\{-1,1\},i=1,...m$，假设训练集线性可分，容易知道应该找到位于两类样本“正中间”的划分超平面
+
+  + 划分超平面：$w^Tx+b=0$。设样本空间中任意点到超平面的距离为 $r$
+
+    ![](pic\20180823151007260.png)
+
+    易得 $x=x_0+r\frac{w}{\|w\|}$。将$w^Tx_0+b=0$代入，得到 $r=\frac{w^Tx+b}{\|w\|}$ 。
+
+  +  假设超平面能正确分类，则存在$\delta>0$使
+    $$
+    \begin{align}
+    &w^Tx_i+b\geq\delta,\quad y_i=+1\\
+    &w^Tx_i+b\leq-\delta,\quad y_i=-1
+    \end{align}
+    $$
+    两边同时除以$\delta$，则可以得到有
+    $$
+    \begin{align}
+    &w^Tx_i+b\geq 1,\quad y_i=+1\\
+    &w^Tx_i+b\leq-1,\quad y_i=-1
+    \end{align}
+    $$
+    距离超平面最近的点使得等式成立，它们称为**支持向量**。
+
+    ![](pic\5bc72f6a838c4.png)
+
+    定义**间隔**为两个异类支持向量到超平面的距离之和
+    $$
+    \gamma=\frac{2}{\|w\|}
+    $$
+    则目标变为找到具有最大间隔(maximum margin)的划分超平面：
+    $$
+    \begin{align}
+    &\max_{w,b}\quad\frac{2}{\|w\|}\\
+    &s.t.\quad y_i(w^Tx_i+b)\geq1,\quad i=1,...,m
+    \end{align}
+    $$
+    等价于
+    $$
+    \begin{align}
+    &\min_{w,b}\quad\frac{1}{2}\|w\|^2\\
+    &s.t.\quad y_i(w^Tx_i+b)\geq1,\quad i=1,...,m
+    \end{align}
+    $$
+    这是一个凸的二次规划问题
+
+### 对偶问题
+
++ **拉格朗日方法**：
+  $$
+  \begin{align}
+  \min_x\quad&f_0(x)\\
+  s.t.\quad&f_i(x)\leq0,\quad i=1,...,m\\&h_i(x)=0,\quad i=1,...,p
+  \end{align}
+  $$
+  对等式约束和不等式约束引入拉格朗日乘子  $v_i,\lambda_i$  得到**拉格朗日函数**：
+  $$
+  L(x,\lambda,v)=f_0(x)+\sum_{i=0}^m\lambda_if_i(x)+\sum_{i=1}^pv_ih_i(x)
+  $$
+  进一步得到**拉格朗日对偶函数**：$g(\lambda,v)=\inf_xL(x,\lambda,v)$.
+
+  **拉格朗日对偶问题**为：
+  $$
+  \begin{align}
+  \max\quad &g(\lambda,v)\\
+  s.t.\quad&\lambda\succcurlyeq0
+  \end{align}
+  $$
+  对偶问题构成了原问题最优值的下届，当**Slater条件**成立时，强对偶性成立，即**两个问题的最优解相等**。
+
+  强对偶性成立时，有最优性条件：**KKT条件**：
+  $$
+  \begin{align}
+  f_i(x^*)\leq0&,\quad i=1,...,m\\
+  h_i(x^*)=0&,\quad i=1,...,p\\
+  \lambda_i^*\geq0&,\quad i=1,...,m\\
+  \lambda_i^*f_i(x^*)=0&,\quad i=1,...,m\quad\text{(由互补松驰性得到)}\\
+  \nabla L(x^*,\lambda^*,v^*)=0
+  \end{align}
+  $$
+  
+
++ 应用拉格朗日乘子法，得到上面问题的对偶函数/拉格朗日函数：
+  $$
+  L(w,b,\alpha)=\frac{1}{2}\|w\|^2+\sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b)),\quad\alpha=(\alpha_1,...,\alpha_m)
+  $$
+  由KKT条件对w和b求偏导为0得到 $\quad w=\sum_{i=1}^m\alpha_iy_ix_i,\quad 0=\sum_{i=1}^m\alpha_iy_i$。代入上式得到**拉格朗日对偶函数**：
+
+  <img src="pic\image-20200406193638955.png" alt="image-20200406193638955" style="zoom:80%;" />
+
+  所以其对偶问题为$\max_\alpha\min_{w,b}L(w,b,\alpha)$，即
+  $$
+  \begin{align}
+  \max_\alpha&\quad \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j\\
+  s.t.&\quad\sum_{i=1}^m\alpha_iy_i=0,\\
+  &\quad\alpha_i\geq0,\quad i=1,...,m
+  \end{align}
+  $$
+  解出$\alpha$后，即可得到w和b。
+
+  令$f(x_i)=w^Tx_i+b$，由KKT条件得:
+  $$
+  \begin{align}
+  &\alpha_i\geq0\\
+  &1-y_if(x_i)\leq0\\
+  &\alpha_i(1-y_if(x_i))=0
+  \end{align}
+  $$
+  
 
