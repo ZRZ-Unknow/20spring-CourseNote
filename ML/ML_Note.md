@@ -317,12 +317,32 @@ $$
 ### 主成分分析
 
 + Principal Component Analysis:降维，无监督学习
-  + 最大化方差推导：
-  + 
-
-
-
-## TODO: 拉格朗日对偶，奇异值分解与特征值分解，PCA推导，矩阵求导
+  + **最大化方差推导**：假定样本已经中心化，即$\sum_ix_i=0$，投影矩阵为$W$，$x_i$的投影为$W^Tx_i$。
+  
+    ![image-20200406210416557](pic\image-20200406210416557.png)
+  
+    **协方差相关详见https://blog.csdn.net/xueluowutong/article/details/85334256?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2**
+  
+    
+  
+    得到样本点的协方差矩阵为$\sum_iW^Tx_ix_i^TW$，最大化方差，则优化目标可以写为
+    $$
+    \begin{align}
+    \max_W&\quad tr(WXX^TW)\\
+    s.t.&\quad W^TW=I
+    \end{align}
+    $$
+    
+  
+  + **最近重构性推导**：样本已经中心化，假定投影变换后的新坐标系为$\{w_1,...,w_d\}$，$w_i$为标准正交基向量（$\|w_i\|_2=1,w_i^Tw_j=0(i\neq j)$，若丢弃新坐标系中的部分坐标，将维度降到$d'$，样本$x_i$的投影为$z_i=(z_{i1},...,z_{id'}),z_{ij}=w_j^Tx_i$，若基于$z_i$来重构$x_i$，得到$\hat{x_i}=\sum_{j=1}^{d'}z_{ij}w_j$。
+  
+    ![image-20200406213333223](pic\image-20200406213333223.png)
+  
+    用拉格朗日乘子法，求导后得到$XX^TW=\lambda W$. 算法：
+  
+    ![image-20200406213654360](pic\image-20200406213654360.png)
+  
+  + 推导详见**南瓜书https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10**
 
 
 
