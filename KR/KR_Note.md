@@ -215,15 +215,37 @@
 
 # Week7
 
++ java的OWLAPI相关
 
 
 
+# Week8
 
+### Reasoning in ALC
 
++ 判定satisfiable的 Tableau Methods：
+
+  + transform a given concept into Negation Normal Form (NNF)：将所有的not放在concept前面
+
+    ![image-20200407144304884](pic\image-20200407144304884.png)
+
+  + apply completion rules in arbitrary order as long as possible：
+
+  + the concept is satisfiable if, and only if, a clash-free tableau can be derived to which no completion rule（扩展规则） is applicable：当且仅当 没有矛盾的rule饱和的tableau被推导出
+
+  ![image-20200407145040324](pic\image-20200407145040324.png)
+
++ To show that the tableau does what it is supposed to do one has to show
+
+  + Soundness: If the concept is satisfiable, then there is a branch without clash such that no rule is applicable;
+  + Termination: The tableau terminates after finitely many steps for any input concept in NNF;
+  + Completeness: If there is a branch without clash such that no rule is applicable, then the concept is satisfiable
 
 
 
 # Word
+
+tractable ：易处理的，能在多项式时间内解决
 
 interlude(插入)
 
