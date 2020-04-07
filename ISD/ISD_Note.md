@@ -798,10 +798,28 @@
 
   <img src="pic\image-20200407214623611.png" alt="image-20200407214623611" style="zoom: 80%;" />
 
+  $$
+\begin{align}
+  U^\pi(s)&=E_\pi[R_t|S_t=s]+E_\pi(\gamma G_{t+1}|S_t=s)\\
+&=\sum_{a}\pi(a|s)r(s,a)+...\text{ (由定义将r(s,a)展开得到下式)}\\ 
+  &=\sum_{a}\pi(a|s)\sum_rr\sum_{s'}p(s',r|s,a)+...\text{ (可以将r放进后面的求和里，然后就可以合并求和)}\\
+  &=\sum_{a}\pi(a|s)\sum_{s',r}p(s',r|s,a)r+...\\
+  \end{align}
+  $$
+  后面那项是表示**后一个状态$S_{t+1}$开始的回报的期望**，所以应该遍历所有可能的$S_{t+1}$：
+  $$
+  \begin{align}
+  E_\pi(\gamma G_{t+1}|S_t=s)&=E_\pi(\gamma \sum_{k=0}^\infin\gamma^kR_{t+k+1}|S_t=s)\\
+  &=\sum_{a}\pi(a|s)\sum_r\sum_{s'}p(s',r|s,a)\gamma E_\pi[\sum_{k=0}^\infin\gamma^kR_{t+k+1}|S_{t+1}=s']\\
+  &=\sum_{a}\pi(a|s)\sum_{s',r}p(s',r|s,a)\gamma U^\pi(s')\\
+  \end{align}
+  $$
+  
+  
   状态值函数的**备份(backup)图**：
-
+  
   <img src="pic\image-20200407214725133.png" alt="image-20200407214725133" style="zoom: 80%;" />
-
+  
 + **行动值函数**：在状态s采取行动a后执行策略$\pi$的期望回报
   $$
   Q^\pi(s,a)=E_\pi[G_t|S_t=s,A_t=a]=E_\pi[\sum_{k=0}^\infin\gamma^kR_{t+k}|S_t=s,A_t=a]
@@ -810,8 +828,10 @@
 
   ![image-20200407215302611](pic\image-20200407215302611.png)
 
-  备份图：
+  前面那项是因为行动已经确定了，所以不用再乘$\pi(a|s)$；后面那项看成是后一个状态-行动开始的回报的期望，所以需要对$s',a'$累加。
 
+  备份图：
+  
   <img src="pic\image-20200407215343733.png" alt="image-20200407215343733" style="zoom:80%;" />
 
 
