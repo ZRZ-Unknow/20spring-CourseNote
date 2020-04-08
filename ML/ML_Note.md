@@ -333,7 +333,6 @@ $$
     \end{align}
     $$
     
-  
   + **最近重构性推导**：样本已经中心化，假定投影变换后的新坐标系为$\{w_1,...,w_d\}$，$w_i$为标准正交基向量（$\|w_i\|_2=1,w_i^Tw_j=0(i\neq j)$，若丢弃新坐标系中的部分坐标，将维度降到$d'$，样本$x_i$的投影为$z_i=(z_{i1},...,z_{id'}),z_{ij}=w_j^Tx_i$，若基于$z_i$来重构$x_i$，得到$\hat{x_i}=\sum_{j=1}^{d'}z_{ij}w_j$。
   
     ![image-20200406213333223](pic\image-20200406213333223.png)
@@ -515,7 +514,6 @@ $$
   \end{align}
   $$
   
-
 + 应用拉格朗日乘子法，得到上面问题的对偶函数/拉格朗日函数：
   $$
   L(w,b,\alpha)=\frac{1}{2}\|w\|^2+\sum_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b)),\quad\alpha=(\alpha_1,...,\alpha_m)
@@ -586,5 +584,122 @@ $$
 
 ### 软间隔与正则化
 
++ 允许某些点不满足约束$y_i(w^Tx_i+b)\geq1$，“出现在间隔里面”；我们期望在最大化间隔同时，不满足约束的样本尽可能少，于是优化目标变为：
+  $$
+  \min_{w,b}\frac{1}{2}\|w\|^2+C\sum_{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)\\
+  l_{0/1}=
+  \begin{cases}
+  1,\quad z<0\\
+  0,\quad otherwise
+  \end{cases}
+  $$
+  C为大于0的常数，当C为无穷大时，为了最小化目标，迫使所有样本都满足约束使得后面的求和项为0.
+
+  $l_{0/1}$非凸，不连续，常用**替代损失函数**：
+
+  ![image-20200408222125444](pic\image-20200408222125444.png)
+
+  采用hinge损失：当满足约束时，求和项为0；不满足时，大于0
+  $$
+  \min_{w,b}\frac{1}{2}\|w\|^2+C\sum_{i=1}^m\max(0,1-y_i(w^Tx_i+b))
+  $$
+  引入松弛变量$\xi_i\geq\max(0,1-y_i(w^Tx_i+b))$：即所有样本满足松弛后的约束$y_i(w^T_ix_i+b)\geq1-\xi_i$
+  $$
+  \begin{align}
+  \min_{w,b}&\quad\frac{1}{2}\|w\|^2+C\sum_{i=1}^m\xi_i\\
+  s.t.&\quad y_i(w^Tx_i+b)\geq1-\xi_i\\
+  &\quad\xi_i\geq0,\quad i=1,...,m
+  \end{align}
+  $$
+  类似地，得到拉格朗日函数：
+
+  ![image-20200408223335272](pic\image-20200408223335272.png)
+
+  对$w,b,\xi_i$求$\inf$得：
+  $$
+  w=\sum_{i=1}^m\alpha_iy_ix_i,\quad0=\sum_{i=1}^m\alpha_iy_i,\quad C=\alpha_i+\mu_i
+  $$
+  得到对偶问题：
+
+  ![image-20200408223801256](pic\image-20200408223801256.png)
+
+  **与硬间隔的对偶问题差别在与对$\alpha$的约束不同**。其KKT条件为：
+
+  ![image-20200408224132717](pic\image-20200408224132717.png)
+
+  对任意训练样本，总有$\alpha_i=0$或$y_if(x_i)=1-\xi_i$.
+
+  + 若$\alpha_i=0$ , 则该样本不会对模型产生影响
+  + 若$\alpha_i>0$，则必有$y_if(x_i)=1-\xi_i$，即该样本为支持向量，由$C=\alpha_i+\mu_i$知
+    + 若$\alpha_i<C$，则有$\mu_i>0$，因此$\xi_i=0$，该样本正好在最大间隔边界上
+    + 若$\alpha_i=C$，则有$u_i=0$，
+      + 若$\xi_i\leq 1$，则该样本落在最大间隔内部
+      + 若$\xi_i>1$，则该样本被错误分类
+
+  因而软间隔支持向量机的最终模型仅和支持向量有关，采用hinge损失函数保持了稀疏性。
+
+  <img src="pic\image-20200408225027009.png" alt="image-20200408225027009" style="zoom:67%;" />
 
 
+
+### 支持向量回归
+
++ 希望学得$f(x)=w^Tx+b$，使得$f(x),y$尽可能接近
+
++ Support Vector Regression假设能容忍$f(x)$与$y$之间最多有$\epsilon$的误差，即当它们两个的差的绝对值大于$\epsilon$时才计算损失
+
++ 形式化SVR：
+  $$
+  \min_{w,b}\frac{1}{2}\|w\|^2+C\sum_{i=1}^ml_\epsilon(f(x_i)-y_i)\\
+  l_{0/1}=
+  \begin{cases}
+  0,\quad &|z|\leq\epsilon\\
+  |z|-\epsilon,\quad &otherwise
+  \end{cases}
+  $$
+  对每个点需要两个松弛变量：因为$f(x_i)-\epsilon\leq y_i\leq f(x_i)+\epsilon$，所以$f(x_i)-\epsilon-\xi_i\leq y_i\leq f(x_i)+\epsilon+\hat{\xi_i}$
+  $$
+  \begin{align}
+  \min_{w,b}&\quad\frac{1}{2}\|w\|^2+C\sum_{i=1}^m(\xi_i+\hat{\xi_i})\\
+  s.t.&\quad f(x_i)-y_i\leq\epsilon+\xi_i\\
+  &\quad y_i-f(x_i)\leq\epsilon+\hat{\xi_i}\\
+  &\quad\xi_i\geq0,\hat{\xi_i}\geq0,\quad i=1,...,m
+  \end{align}
+  $$
+  得到拉格朗日函数：
+
+  <img src="pic\image-20200408231525962.png" alt="image-20200408231525962" style="zoom:80%;" />
+
+  对$w,b,\xi_i$求$\inf$得：
+  $$
+  w=\sum_{i=1}^m(\hat{\alpha_i}-\alpha_i)x_i,\quad0=\sum_{i=1}^m(\hat{\alpha_i}-\alpha_i),\quad C=\alpha_i+\mu_i,\quad C=\hat{\alpha_i}+\hat{\mu_i}
+  $$
+  得到对偶问题：
+
+  <img src="pic\image-20200408231814498.png" alt="image-20200408231814498" style="zoom: 80%;" />
+
+  KKT条件为：
+
+  <img src="pic\image-20200408231856437.png" alt="image-20200408231856437" style="zoom:80%;" />
+
+  得到解$f(x)=\sum_{i=1}^m(\hat{\alpha_i}-\alpha_i)x_i^Tx+b$，使$\hat{\alpha_i}-\alpha_i\neq0$的样本为支持向量，它们必然落在$\epsilon$间隔带之外
+
+  因为：
+
+  + 当且仅当$f(x_i)-y_i-\epsilon-\xi_i=0$时$\alpha_i$才能取非零值；当且仅当$f(x_i)-y_i-\epsilon-\hat{\xi_i}=0$时$\hat{\alpha_i}$才能取非零值。即样本不落入$\epsilon$间隔带中它们才能取0值。且这两个为0不能同时成立，所以$\alpha_i,\hat{\alpha_i}$中至少有一个为0
+
+  <img src="pic\image-20200408232438799.png" alt="image-20200408232438799" style="zoom:80%;" />
+
+
+
+### 核方法
+
++ ![image-20200408232957481](pic\image-20200408232957481.png)
+
++ 核方法(kernel methods)常通过引入核函数来将线性学习器拓展为非线性学习器
+
++ 对LDA进行“核化”得到**“核线性判别分析”KLDA**：
+
+  西瓜书P138
+
+  
