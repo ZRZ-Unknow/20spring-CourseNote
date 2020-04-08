@@ -170,6 +170,11 @@
   + What vegetarian pizzas are there that don’t have olives? 
   + Implies discriminations of different toppings, vegetable/fish/meat toppings and closure of toppings
 
+
+
+
+### Axiom Pattern
+
 + An axiom pattern 是一个经常出现的关于axiom如何在ontology中使用的模式
 
   + 最常见的：A subclassof B
