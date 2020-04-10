@@ -477,7 +477,7 @@ $$
     &s.t.\quad y_i(w^Tx_i+b)\geq1,\quad i=1,...,m
     \end{align}
     $$
-    这是一个凸的二次规划问题
+    这是一个凸的二次规划问题，解这个问题的$w$不是稀疏的，所有样本都会对$w$产生影响；但是解它的对偶问题得到的解$w$是稀疏的。
 
 ### 对偶问题
 
@@ -501,7 +501,7 @@ $$
   s.t.\quad&\lambda\succcurlyeq0
   \end{align}
   $$
-  对偶问题构成了原问题最优值的下届，当**Slater条件**成立时，强对偶性成立，即**两个问题的最优解相等**。
+  对偶问题构成了原问题最优值的下界，当**Slater条件**成立时，强对偶性成立，即**两个问题的最优解相等**。
 
   强对偶性成立时，有最优性条件：**KKT条件**：
   $$
@@ -530,7 +530,7 @@ $$
   &\quad\alpha_i\geq0,\quad i=1,...,m
   \end{align}
   $$
-  解出$\alpha$后，即可得到w和b。
+  解出$\alpha$后，即可得到w，对于$\alpha_i$不为0的样本，$y_i(w^Tx_i+b)=1$，代入w即可得到b，但实际上常使用所有支持向量求得的b相加再求平均，更鲁棒。
 
   令$f(x_i)=w^Tx_i+b$，得到模型$f(x)=w^Tx+b=(\sum_{i=1}^m\alpha_iy_ix_i^Tx)+b$。由KKT条件得:
   $$
@@ -543,8 +543,15 @@ $$
   故对一个样本来说，要么$\alpha_i=0$要么$y_if(x_i)=1$，**若为前者，则该样本将不会在模型$f(x)$的求和项中出现，若为后者，则表明该样本为支持向量**。
 
 + **SMO算法**求解该对偶问题。
-  + 选取一对需更新的变量$\alpha_i,\alpha_j$
-  + 固定$\alpha_i,\alpha_j$以外的参数，求解对偶式得到更新后的$\alpha_i,\alpha_j$
+
+  + 执行以下步骤直到收敛：
+
+    + 选取一对需更新的变量$\alpha_i,\alpha_j$
+    + 固定$\alpha_i,\alpha_j$以外的参数，求解对偶式得到更新后的$\alpha_i,\alpha_j$
+
+  + <img src="pic\image-20200410103941772.png" alt="image-20200410103941772" style="zoom:67%;" />
+
+    $c=-\sum_{k\neq i,j}\alpha_ky_k$为常数。
 
 
 
@@ -581,6 +588,12 @@ $$
     + 对任意正数$\gamma_1,\gamma_2$，其线性组合$\gamma_1\kappa_1+\gamma_2\kappa_2$也是核函数。
     + 核函数的直积也是核函数 $\kappa_1\bigotimes\kappa_2(x,z)=\kappa_1(x,z)\kappa_2(x,z)$。
     + 对任意函数$g(x)$，$\kappa(x,z)=g(x)\kappa_1(x,z)g(z)$也是核函数。
+    
+    基本经验：**文本数据常用线性核，情况不明时可尝试高斯核**。
+    
+  + <img src="pic\image-20200410110519500.png" alt="image-20200410110519500" style="zoom:67%;" />
+
+
 
 ### 软间隔与正则化
 
@@ -603,7 +616,7 @@ $$
   $$
   \min_{w,b}\frac{1}{2}\|w\|^2+C\sum_{i=1}^m\max(0,1-y_i(w^Tx_i+b))
   $$
-  引入松弛变量$\xi_i\geq\max(0,1-y_i(w^Tx_i+b))$：即所有样本满足松弛后的约束$y_i(w^T_ix_i+b)\geq1-\xi_i$
+  引入松弛变量$\xi_i\geq\max(0,1-y_i(w^Tx_i+b))$：即所有样本满足松弛后的约束$y_i(w^T_ix_i+b)\geq1-\xi_i$，后面是个“惩罚项”，为了使其不过于太松弛
   $$
   \begin{align}
   \min_{w,b}&\quad\frac{1}{2}\|w\|^2+C\sum_{i=1}^m\xi_i\\
