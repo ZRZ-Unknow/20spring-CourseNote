@@ -123,6 +123,19 @@ git config --global credential.helper store
 
 
 
+## python
+
+### 源
+
++ ```python
+  pip install pqi
+  pqi  #查看usage
+  pqi ls #查看下载源
+  pqi use aliyun #使用aliyun下载源
+  ```
+
++ 
+
 
 
 ## M1:pstree

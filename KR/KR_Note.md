@@ -248,6 +248,16 @@
 
 
 
+
+
+# Week9: Catch up lecture
+
+
+
+
+
+
+
 # Word
 
 tractable ：易处理的，能在多项式时间内解决
