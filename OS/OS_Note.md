@@ -1087,3 +1087,75 @@ mutex_unlock(&big_lock);
   > - 进程/线程不是纯粹的计算或 (长时间) I/O
   >   - 等待互斥锁/信号量
   >   - 或是非常短暂的 I/O 等待 (比一个时间片短很多)
+  
++ 优先级翻转：
+
+  ```c
+  void bad_guy() { // 高优先级
+    while (1) {
+      mutex_lock(&lk);
+      ...
+      mutex_unlock(&lk);
+    }
+  }
+  void nice_guy() { // 中优先级
+    while (1) ;
+  }
+  void very_nice_guy() { // 最低优先级
+    while (1) {
+      mutex_lock(&lk);
+      ...
+      mutex_unlock(&lk);
+    }
+  }
+  //very_nice_guy持有锁，让出了处理器，此时bad_guy要获得锁，从而阻塞，处理器不会调度它而调度nice_guy，导致nice_guy的运行时间比bad_guy长，发生优先级翻转
+  ```
+
++ 解决优先级翻转：
+
+  + **优先级继承/提升**，持有mutex的线程/进程会继承block在该mutex上的最高优先级
+  + 在系统中动态维护资源依赖关系
+  + 避免高/低优先级的任务争抢资源，对潜在的优先级翻转进行预警lockdep
+
+
+
+# 虚拟化:请页调度
+
++ 如何实现mmap?借助分页机制
+
+  <img src="pic/Screenshot from 2020-04-18 00-35-25.png" style="zoom: 67%;" />
+
+### DEmand Paging
+
++ 按进程需要分配页面
++ 操作系统可以看到所有的物理页面
+  - Lab1: kalloc/kfree 我们已经理解了这一点
+  - 所有的 free pages 都是可用的
+    - 用这些 free pages 组成进程的 $f_1,f_2,...$和它们实际的内存
+  - 进程创建 (execve) 时只要准备好 mm_area就行
+    - 开始执行后会 page fault
+    - page fault 会实际调用 kalloc 分配一页，并填入正确的数据
+
++ swapping：
+
+  即便一个进程已经分配了一个页面，我们也可以随时任意地 “hack” 进程的地址空间
+
+  - 把页面的数据 “swap out”
+    - 保存到 persistent storage
+    - 取消这个页面的映射
+  - 之后进程 page fault 的时候再加载回来
+
++ <img src="pic/Screenshot from 2020-04-18 01-08-47.png" style="zoom:67%;" />
+
+  比如查表的时候跳到了printf_wrapper，在这个wrapper函数里可以先打印一些信息，再调用真正的printf。
+
+  从而可以看到库函数的调用
+
++ 如果两个动态链接库都定义了同一个变量……
+
+  - `libc.so` - `printf`
+  - `libfoo.so` - `printf`
+
+  它们都被加载，会发生什么？
+
+  - “先到先得”：先加载过的以后都一直加载它
