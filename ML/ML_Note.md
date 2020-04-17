@@ -428,6 +428,146 @@ $$
 
 
 
+# Chapter5:神经网络
+
+### 神经元模型
+
++ “神经网络是由具有适应性的简单单元组成的广泛并行互联的网络，它的组织能够模拟生物神经系统对真实世界物体所作出的反应”----Kohonen
+
++ M-P神经元模型
+
+  <img src="pic\image-20200417111341720.png" alt="image-20200417111341720" style="zoom:80%;" />
+
++ 神经网络的万有逼近性：（任何通用机器学习模型都要具有万有逼近性）“仅需一个包含足够多神经元的隐层，多层前馈神经网络就能以任意精度逼近任意复杂度的连续函数”----Hornik
+
++ 感知机（Perceptron）：由两层神经元组成，输入层接收外界输入信号后传递给输出层（M-P神经元），也称阈值逻辑单元。
+
+  <img src="pic\image-20200417111557014.png" alt="image-20200417111557014" style="zoom:67%;" />
+
+  
+
+### 反向传播算法
+
++ BackPropagation：
+
+  给定训练集$D=\{(x^1,y^1),...(x^m,y^m\}$，$x$为$d$维向量，$y$为$l$维向量，在如图的网络中：
+
+  ![image-20200417170638369](pic\image-20200417170638369.png)
+
+  假设隐层和输出层神经元都使用Sigmoid函数$f(x)=\frac{1}{1+e^{-x}}$，有
+  $$
+  f'(x)=-\frac{1}{(1+e^{-x})^2}\times -e^{-x}=\frac{1}{1+e^{-x}}\times \frac{e^{-x}}{1+e^{-x}}=f(x)(1-f(x))\\
+  f(-x)=1-f(x)\\
+  f'(-x)=-1\times f(-x)\times(1-f(-x))=-(1-f(x))f(x)=-f'(x)
+  $$
+  对于$(x^k,y^k)$，假设神经网络输出为$\hat{y_k}=(\hat{y_1}^k,...\hat{y_l}^k)$，即$f(\beta_j-\theta_j)=\hat{y_j}^k$. 用均方误差作为loss：
+  $$
+  E_k=\frac{1}{2}\sum_{j=1}^l(\hat{y_j}^k-y_j^k)^2
+  $$
+  则第j个输出神经元的权重更新为：
+  $$
+  \Delta w_{hj}=-\eta\frac{\partial E_k}{\partial w_{hj}}
+  $$
+  由链式法则$w_{hj}\rightarrow\beta_j\rightarrow\hat{y_j}^k$,得到
+  $$
+  \begin{align}
+  \frac{\partial E_k}{\partial w_{hj}}&=\frac{\partial E_k}{\partial\hat{y_j}^k}\times
+  \frac{\partial\hat{y_j}^k}{\partial\beta_j}\times\frac{\partial\beta_j}{\partial w_{hj}}\\
+  &=(\hat{y_j}^k-y_j^k)\times \hat{y_j}^k(1-\hat{y_j}^k)\times b_h
+  \end{align}
+  $$
+  从而
+  $$
+  \Delta w_{hj}=\eta g_jb_h
+  $$
+  其中
+  $$
+  \begin{align}
+  g_j&=\hat{y_j}^k(1-\hat{y_j}^k)(y_j^k-\hat{y_j}^k)\\
+  &=-\frac{\partial E_k}{\partial \hat{y_j}^k}\frac{\partial\hat{y_j}^k}{\partial\beta_j}\\
+  &=-\frac{\partial E_k}{\partial \beta_j}
+  \end{align}
+  $$
+  由Sigmoid函数性质，$\hat{y_j}^k=f(\beta_j-\theta_j)$容易得到
+  $$
+  \frac{\partial E_k}{\partial \theta_j}=\frac{\partial E_k}{\partial \hat{y_j}^k}\frac{\partial \hat{y_j}^k}{\partial \theta_j}=
+  -\frac{\partial E_k}{\partial \beta_j}=g_j
+  $$
+  第j个输出神经元的阈值更新为：
+  $$
+  \begin{align}
+  \Delta \theta_j&=-\eta\frac{\partial E_k}{\partial \theta_{j}}\\
+  &=-\eta\frac{\partial E_k}{\partial\hat{y_j}^k}\times
+  \frac{\partial\hat{y_j}^k}{\partial\theta_j} \\
+  &=-\eta(\hat{y_j}^k-y_j^k)\times [-1\times(1-\hat{y_j}^k)\hat{y_j}^k]\\
+  &=-\eta g_j
+  \end{align}
+  $$
+  第h个隐层神经元的权重更新为：
+  $$
+  \begin{align}
+  \Delta v_{ih}&=-\eta \frac{\partial E_{k}}{\partial v_{ih}}
+  \end{align}
+  $$
+  由链式法则$v_{ih}\rightarrow \alpha_{h}\rightarrow b_h\rightarrow\beta\rightarrow\hat{y}^k$,得到
+  $$
+  \begin{align}
+  \frac{\partial E_{k}}{\partial v_{ih}}&=\frac{\partial E_k}{\partial b_h}\times
+  \frac{\partial b_h}{\partial \alpha_h}\times\frac{\partial \alpha_h}{\partial v_{ih}}
+  \end{align}
+  $$
+  其中后两项由$b_h=f(\alpha_h-\gamma_h)$得到为$b_h(1-b_h)\times x_i^k$，其中$x_i^k$代表$x^k$的第$i$个分量
+  $$
+  \begin{align}
+  \frac{\partial E_k}{\partial b_h}&=\sum_{j=1}^l\frac{\partial E_k}{\partial \hat{y_j}^k}\times\frac{\partial \hat{y_j}^k}{\partial \beta_j}\times\frac{\partial \beta_j}{\partial b_h}\\
+  &=\sum_{j=1}^l(-g_j)\times w_{hj}
+  \end{align}
+  $$
+  综合得到
+  $$
+  \Delta v_{ih}=\eta(\sum_{j=1}^l g_jw_{hj})b_h(1-b_h)x_i^k=\eta e_hx_i^k
+  $$
+  其中
+  $$
+  \begin{align}
+  e_h&=b_h(1-b_h)\sum_{j=1}^l g_jw_{hj}\\
+  &=-\frac{\partial E_k}{\partial b_h}\frac{\partial b_h}{\partial\alpha_h}\\
+  &=-\frac{\partial E_k}{\partial \alpha_h}
+  \end{align}
+  $$
+  由Sigmoid函数性质，$b_h=f(\alpha_{h}-\gamma_h)$可得
+  $$
+  \frac{\partial E_k}{\partial \gamma_h}=\frac{\partial E_k}{\partial b_h}\frac{\partial b_h}{\partial\gamma_h}=-\frac{\partial E_k}{\partial \alpha_h}=e_h
+  $$
+  第h个隐层神经元的阈值更新为：
+  $$
+  \begin{align}
+  \Delta\gamma_h&=-\eta\frac{\partial E_{k}}{\partial \gamma_h}\\
+  &=-\eta\frac{\partial E_k}{\partial b_h}\frac{\partial b_h}{\partial \gamma_h}\\
+  &=-\eta e_h
+  \end{align}
+  $$
+
+
+
++ **标准BP算法描述**：
+
+  <img src="pic\image-20200417183238278.png" alt="image-20200417183238278" style="zoom: 50%;" />
+
++ <img src="pic\image-20200417183343253.png" alt="image-20200417183343253" style="zoom:50%;" />
+
+  在很多任务中，累积误差下降到一定程度后进一步下降会十分缓慢这时标准BP算法往往会获得较好的解。
+
++ 缓解过拟合，两种策略：
+
+  <img src="pic\image-20200417183518470.png" alt="image-20200417183518470" style="zoom:50%;" />
+
+
+
+
+
+
+
 # Chapter6:支持向量机
 
 ### SVM基本型
