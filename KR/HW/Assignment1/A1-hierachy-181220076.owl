@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/jaqen/ontologies/2020/2/sushi"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/jaqen/ontologies/2020/2/sushi">
+    <Prefix name="" IRI="http://www.semanticweb.org/jaqen/ontologies/2020/2/sushi"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Aubergine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Avocado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeanProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Beef"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Capelin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Carrot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Caviar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cereal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cheese"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chicken"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chive"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cream"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Crumb"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cucumber"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DairyProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Duck"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Egg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fruit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Garlic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ginger"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hoisin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ingredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lettuce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Masago"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mayo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nori"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Oil"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Onion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Panko"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parmesan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pepper"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ponzu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pork"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Prawn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Roe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Salmon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Seafood"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Seasoning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sesame"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shichimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shiso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoyBean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoySauce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpringOnion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sriracha"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sugar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Surimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Teriyaki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tofu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tonkatsu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tuna"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vegetable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vinegar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wasabi"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Crumb"/>
+        <Class IRI="#Panko"/>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Aubergine"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Avocado"/>
+        <Class IRI="#Fruit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeanProduct"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Beef"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Capelin"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Carrot"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Caviar"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Caviar"/>
+        <Class IRI="#Roe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cheese"/>
+        <Class IRI="#DairyProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chicken"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chive"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cream"/>
+        <Class IRI="#DairyProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Crumb"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cucumber"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Duck"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fish"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fruit"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Garlic"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ginger"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ginger"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hoisin"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lettuce"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Masago"/>
+        <Class IRI="#Capelin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Masago"/>
+        <Class IRI="#Roe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mayo"/>
+        <Class IRI="#Egg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meat"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nori"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Oil"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Onion"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Panko"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parmesan"/>
+        <Class IRI="#Cheese"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pepper"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ponzu"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pork"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Prawn"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rice"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Roe"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Salmon"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Seafood"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Seasoning"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sesame"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shichimi"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shiso"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoyBean"/>
+        <Class IRI="#BeanProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoySauce"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spice"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpringOnion"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sriracha"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sugar"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Surimi"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Teriyaki"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tofu"/>
+        <Class IRI="#BeanProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tonkatsu"/>
+        <Class IRI="#Pork"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tuna"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vegetable"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vinegar"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wasabi"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Aubergine</IRI>
+        <Literal>the purple egg-shaped fruit of a tropical Old World plant, which is eaten as a vegetable, an eggplant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Avocado</IRI>
+        <Literal>a pear-shaped fruit with a rough leathery skin, smooth oily edible flesh, and a large stone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Capelin</IRI>
+        <Literal>a small fish of the North Atlantic, resembling a smelt.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Caviar</IRI>
+        <Literal>the pickled roe of sturgeon or other large fish, eaten as a delicacy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Cereal</IRI>
+        <Literal>a grain used for food, such as wheat, oats, or corn.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Chive</IRI>
+        <Literal>a widely cultivated small Eurasian plant related to the onion, with purple-pink flowers and dense tufts of long tubular leaves that are used as a culinary herb.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Crumb</IRI>
+        <Literal>a small fragment of bread</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DairyProduct</IRI>
+        <Literal>milk and any of the foods made from milk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Garlic</IRI>
+        <Literal>a strong-smelling pungent-tasting bulb, used as a flavoring in cooking and in herbal medicine.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Ginger</IRI>
+        <Literal>a hot, fragrant spice made from the rhizome of a plant, which may be chopped or powdered for cooking, preserved in syrup, or candied.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Hoisin</IRI>
+        <Literal>a sweet, spicy, dark red sauce made from soybeans, vinegar, sugar, garlic, and various spices, widely used in southern Chinese cooking.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Lettuce</IRI>
+        <Literal>a cultivated plant of the daisy family, with edible leaves that are a usual ingredient of salads.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Masago</IRI>
+        <Literal>Masago is the roe of capelin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Nori</IRI>
+        <Literal>an edible seaweed, eaten either fresh or dried in sheets, especially by the Japanese.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Panko</IRI>
+        <Literal>a small fragment of bread</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Parmesan</IRI>
+        <Literal>a hard, dry cheese used in grated form, especially on Italian dishes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Ponzu</IRI>
+        <Literal>a Japanese dipping sauce made from soy sauce, lime juice, vinegar, and fish flakes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Prawn</IRI>
+        <Literal>a marine crustacean which resembles a large shrimp.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Salmon</IRI>
+        <Literal>a large edible fish that is a popular game fish, much prized for its pink flesh.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Seasoning</IRI>
+        <Literal>salt, herbs, or spices added to food to enhance the flavor.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Sesame</IRI>
+        <Literal>a tall annual herbaceous plant of tropical and subtropical areas of the Old World, cultivated for its oil-rich seeds.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Shichimi</IRI>
+        <Literal>Shichimi refers to the spicy Japanese condiment shichimi tōgarashi, which literally means “seven flavor chili pepper.”.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Shiso</IRI>
+        <Literal>an Asian plant of the mint family used as a culinary herb.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SoySauce</IRI>
+        <Literal>a sauce made with fermented soybeans, used in Chinese and Japanese cooking.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpringOnion</IRI>
+        <Literal>an onion taken from the ground before the bulb has formed, typically eaten raw in salad; a green onion.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Sriracha</IRI>
+        <Literal>a spicy sauce made with red chili and garlic, served especially with Vietnamese and Thai cuisine.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Surimi</IRI>
+        <Literal>fish (often pollock) that is minced to make a gelatinous paste that is then flavored, reformed into flakes, sticks, or other shapes, and colored.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Teriyaki</IRI>
+        <Literal>a mixture of soy sauce, sake, ginger, and other flavorings, used in Japanese cooking as a marinade or glaze.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Tonkatsu</IRI>
+        <Literal>a Japanese dish of pork filet that is breaded with panko breadcrumbs and deep fried. It is traditionally served with a dark savory tonkatsu sauce and shredded green cabbage.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Tuna</IRI>
+        <Literal>a large and active predatory schooling fish of the mackerel family. Found in warm seas, it is extensively fished commercially and is popular as a game fish.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Vinegar</IRI>
+        <Literal>a sour-tasting liquid containing acetic acid, obtained by fermenting dilute alcoholic liquids, typically wine, cider, or beer, and used as a condiment or for pickling.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Wasabi</IRI>
+        <Literal>a Japanese plant with a thick green root which tastes like strong horseradish and is used in cooking, especially in powder or paste form as an accompaniment to raw fish.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AnonymousIndividual nodeID="_:genid2147483648"/>
+        <IRI>#Ingredient</IRI>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

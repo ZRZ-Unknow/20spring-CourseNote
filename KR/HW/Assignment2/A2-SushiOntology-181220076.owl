@@ -1,0 +1,2862 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/jaqen/ontologies/2020/2/sushi"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/jaqen/ontologies/2020/2/sushi">
+    <Prefix name="" IRI="http://www.semanticweb.org/jaqen/ontologies/2020/2/sushi"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AburiSalmon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AromaticDuck"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Aubergine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Avocado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AvocadoMaki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AvocadoMakiPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AvocadoNigiri"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeanProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Beef"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeefTataki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeefTatakiPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Beetroot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeetrootCuredSalmon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Blossom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Capelin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Carrot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Caviar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cereal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cheese"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chicken"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChickenAvocado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chive"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Coriander"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CorianderSearedTuna"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cream"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Crumb"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CrunchyCalifornia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cucumber"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CucumberMaki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DairyProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dragon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DragonPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Duck"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dynamite"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Egg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fruit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Garlic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ginger"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ginza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlazedAubergine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GlazedAuberginePlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hoisin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InariTaco"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InariTacoPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ingredient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#KickinSalmon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lemon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lettuce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Masago"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mayo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Meat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MixedMakiPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nigiri"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NigiriPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NigiriPlatter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nori"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Oil"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Onion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Panko"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PankoPrawn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parmesan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pepper"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pesto"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ponzu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pork"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Prawn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PrawnStar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Roe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Roll"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RollPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RollPlatter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Salmon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonAvocado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonMaki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonNigiri"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonPonzuSalsa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonSashimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SalmonSelection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Salsa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sashimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SashimiPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sauce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Seafood"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SearedBeef"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SearedBeefPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Seasoning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Seaweed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sesame"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shichimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shiso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoyBean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SoySauce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Spice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpicyChickenKatsu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpringOnion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sriracha"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sugar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Surimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sushi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SushiPlatter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SushiProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Teriyaki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tofu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tonkatsu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tuna"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TunaMayo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TunaMayoPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TunaSashimi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vegan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vegetable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vegetarian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vinegar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wakame"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wasabi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WasabiSauce"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Yasai"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YasaiPlate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YO!Roll"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIngredient"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSushi"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasVType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasKCal"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPrice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isNew"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isSpicy"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Crumb"/>
+        <Class IRI="#Panko"/>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AburiSalmon"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AburiSalmon"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Garlic"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ponzu"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AromaticDuck"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AromaticDuck"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cucumber"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Duck"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Hoisin"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#SpringOnion"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Aubergine"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Avocado"/>
+        <Class IRI="#Fruit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMaki"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMaki"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <Class IRI="#RollPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#AvocadoMaki"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVType"/>
+            <Class IRI="#Vegan"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#AvocadoMaki"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">204</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2.50</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoNigiri"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AvocadoNigiri"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeanProduct"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Beef"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTataki"/>
+        <Class IRI="#Sashimi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTataki"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Beef"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Coriander"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Pepper"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Pesto"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <Class IRI="#SashimiPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#BeefTataki"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#BeefTataki"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">196</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeefTatakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Beetroot"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmon"/>
+        <Class IRI="#Sashimi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmon"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Beetroot"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lemon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Seaweed"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Wakame"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <Class IRI="#SashimiPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#BeetrootCuredSalmon"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#BeetrootCuredSalmon"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">111</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5.70</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeetrootCuredSalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Blossom"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Blossom"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Shiso"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Teriyaki"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tuna"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Capelin"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Carrot"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Caviar"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Caviar"/>
+        <Class IRI="#Roe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cheese"/>
+        <Class IRI="#DairyProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chicken"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChickenAvocado"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChickenAvocado"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Chicken"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Garlic"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lettuce"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Onion"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Parmesan"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chive"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Coriander"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CorianderSearedTuna"/>
+        <Class IRI="#Sashimi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CorianderSearedTuna"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Coriander"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lemon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Seaweed"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tuna"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Wakame"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cream"/>
+        <Class IRI="#DairyProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Crumb"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CrunchyCalifornia"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CrunchyCalifornia"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Onion"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Surimi"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Teriyaki"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cucumber"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CucumberMaki"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CucumberMaki"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cucumber"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Sesame"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dragon"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dragon"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Shichimi"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#SpringOnion"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <Class IRI="#RollPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#Dragon"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#Dragon"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">212</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DragonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Duck"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dynamite"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dynamite"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Oil"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Onion"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Sriracha"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fish"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fruit"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Garlic"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ginger"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ginger"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ginza"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ginza"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Caviar"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cheese"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Chive"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cream"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cucumber"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Sriracha"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Teriyaki"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAubergine"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAubergine"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Teriyaki"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <Class IRI="#NigiriPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#GlazedAubergine"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVType"/>
+            <Class IRI="#Vegan"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#GlazedAubergine"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">74</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2.50</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GlazedAuberginePlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hoisin"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTaco"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTaco"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ponzu"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Sriracha"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tofu"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <Class IRI="#NigiriPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#InariTaco"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVType"/>
+            <Class IRI="#Vegan"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#InariTaco"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">170</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">3.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InariTacoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#KickinSalmon"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#KickinSalmon"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cheese"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cream"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cucumber"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Onion"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Pepper"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Sriracha"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lemon"/>
+        <Class IRI="#Fruit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lettuce"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Masago"/>
+        <Class IRI="#Capelin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Masago"/>
+        <Class IRI="#Roe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mayo"/>
+        <Class IRI="#Egg"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Meat"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <Class IRI="#RollPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#AvocadoMaki"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SalmonMaki"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <ObjectUnionOf>
+                <Class IRI="#AvocadoMaki"/>
+                <Class IRI="#SalmonMaki"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">196</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">3.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MixedMakiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nigiri"/>
+        <Class IRI="#Sushi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nigiri"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#Rice"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlate"/>
+        <Class IRI="#SushiProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlatter"/>
+        <Class IRI="#RollPlatter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlatter"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#AburiSalmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#AvocadoNigiri"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#GlazedAubergine"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#PankoPrawn"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SalmonNigiri"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SearedBeef"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlatter"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <ObjectUnionOf>
+                <Class IRI="#AburiSalmon"/>
+                <Class IRI="#AvocadoNigiri"/>
+                <Class IRI="#GlazedAubergine"/>
+                <Class IRI="#PankoPrawn"/>
+                <Class IRI="#SalmonNigiri"/>
+                <Class IRI="#SearedBeef"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlatter"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">312</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlatter"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.00</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NigiriPlatter"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nori"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Oil"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Onion"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Panko"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PankoPrawn"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PankoPrawn"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Crumb"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Prawn"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tonkatsu"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parmesan"/>
+        <Class IRI="#Cheese"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pepper"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pesto"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ponzu"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pork"/>
+        <Class IRI="#Meat"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Prawn"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrawnStar"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrawnStar"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Panko"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Prawn"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rice"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Roe"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Roll"/>
+        <Class IRI="#Sushi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Roll"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasIngredient"/>
+            <Class IRI="#Rice"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RollPlate"/>
+        <Class IRI="#SushiProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RollPlatter"/>
+        <Class IRI="#SushiPlatter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RollPlatter"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#ChickenAvocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#CrunchyCalifornia"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#KickinSalmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SpicyChickenKatsu"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#Yasai"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RollPlatter"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <ObjectUnionOf>
+                <Class IRI="#ChickenAvocado"/>
+                <Class IRI="#CrunchyCalifornia"/>
+                <Class IRI="#KickinSalmon"/>
+                <Class IRI="#SpicyChickenKatsu"/>
+                <Class IRI="#Yasai"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RollPlatter"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Salmon"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Salmon"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Shichimi"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#SpringOnion"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonAvocado"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonAvocado"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Sesame"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonMaki"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonMaki"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Nori"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonNigiri"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonNigiri"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#SoySauce"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Wasabi"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <Class IRI="#SashimiPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#SalmonSashimi"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#SalmonSashimi"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">113</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5.70</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPonzuSalsa"/>
+        <Class IRI="#Sashimi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonPonzuSalsa"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Ponzu"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salsa"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSashimi"/>
+        <Class IRI="#Sashimi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSashimi"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lemon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Seaweed"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Wakame"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSelection"/>
+        <Class IRI="#SushiPlatter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSelection"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SalmonMaki"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SalmonNigiri"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#SalmonSashimi"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSushi"/>
+                <Class IRI="#YO!Roll"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSelection"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <ObjectUnionOf>
+                <Class IRI="#SalmonMaki"/>
+                <Class IRI="#SalmonNigiri"/>
+                <Class IRI="#SalmonSashimi"/>
+                <Class IRI="#YO!Roll"/>
+            </ObjectUnionOf>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSelection"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">572</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSelection"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">13.40</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SalmonSelection"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Salsa"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sashimi"/>
+        <Class IRI="#Sushi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SashimiPlate"/>
+        <Class IRI="#SushiProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sauce"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Seafood"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeef"/>
+        <Class IRI="#Nigiri"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeef"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Beef"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Rice"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Shichimi"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <Class IRI="#NigiriPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#SearedBeef"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#SearedBeef"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">108</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">4.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearedBeefPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Seasoning"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Seaweed"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sesame"/>
+        <Class IRI="#Cereal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shichimi"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shiso"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoyBean"/>
+        <Class IRI="#BeanProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SoySauce"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Spice"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsu"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsu"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Chicken"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lettuce"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Shichimi"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tonkatsu"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <Class IRI="#RollPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#SpicyChickenKatsu"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#SpicyChickenKatsu"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">145</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">4.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpicyChickenKatsuPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpringOnion"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sriracha"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sugar"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Surimi"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sushi"/>
+        <ObjectUnionOf>
+            <Class IRI="#Nigiri"/>
+            <Class IRI="#Roll"/>
+            <Class IRI="#Sashimi"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SushiPlatter"/>
+        <Class IRI="#SushiProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SushiProduct"/>
+        <ObjectUnionOf>
+            <Class IRI="#NigiriPlate"/>
+            <Class IRI="#RollPlate"/>
+            <Class IRI="#SashimiPlate"/>
+            <Class IRI="#SushiPlatter"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Teriyaki"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tofu"/>
+        <Class IRI="#BeanProduct"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tonkatsu"/>
+        <Class IRI="#Pork"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tonkatsu"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tuna"/>
+        <Class IRI="#Fish"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayo"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayo"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Chive"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cucumber"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Onion"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tuna"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <Class IRI="#RollPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#TunaMayo"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#TunaMayo"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">127</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">4.70</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaMayoPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaSashimi"/>
+        <Class IRI="#Sashimi"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TunaSashimi"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lemon"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Seaweed"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Tuna"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Wakame"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VType"/>
+        <ObjectUnionOf>
+            <Class IRI="#Vegan"/>
+            <Class IRI="#Vegetarian"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vegan"/>
+        <Class IRI="#VType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vegetable"/>
+        <Class IRI="#Ingredient"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vegetarian"/>
+        <Class IRI="#VType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vinegar"/>
+        <Class IRI="#Seasoning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wakame"/>
+        <Class IRI="#Seafood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Wasabi"/>
+        <Class IRI="#Vegetable"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WasabiSauce"/>
+        <Class IRI="#Sauce"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Yasai"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Yasai"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Carrot"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Cucumber"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Lettuce"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Teriyaki"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <Class IRI="#RollPlate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#Yasai"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasVType"/>
+            <Class IRI="#Vegan"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasSushi"/>
+            <Class IRI="#Yasai"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasKCal"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">170</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasPrice"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">3.20</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isNew"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YasaiPlate"/>
+        <DataHasValue>
+            <DataProperty IRI="#isSpicy"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YO!Roll"/>
+        <Class IRI="#Roll"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YO!Roll"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Avocado"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Masago"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Mayo"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasIngredient"/>
+                <Class IRI="#Salmon"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#DairyProduct"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Egg"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Fruit"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Meat"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Seafood"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Seasoning"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Cereal"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Egg"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Fruit"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Meat"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Seafood"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Seasoning"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DairyProduct"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Fruit"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Meat"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Seafood"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Seasoning"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Egg"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Fruit"/>
+        <Class IRI="#Meat"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Fruit"/>
+        <Class IRI="#Seafood"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Fruit"/>
+        <Class IRI="#Seasoning"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Fruit"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Ingredient"/>
+        <Class IRI="#VType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Meat"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Nigiri"/>
+        <Class IRI="#Roll"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Nigiri"/>
+        <Class IRI="#Sashimi"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#NigiriPlate"/>
+        <Class IRI="#RollPlate"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#NigiriPlate"/>
+        <Class IRI="#SashimiPlate"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#NigiriPlate"/>
+        <Class IRI="#SushiPlatter"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Roll"/>
+        <Class IRI="#Sashimi"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#RollPlate"/>
+        <Class IRI="#SashimiPlate"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#RollPlate"/>
+        <Class IRI="#SushiPlatter"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#SashimiPlate"/>
+        <Class IRI="#SushiPlatter"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Seafood"/>
+        <Class IRI="#Seasoning"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Seafood"/>
+        <Class IRI="#Vegetable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Sushi"/>
+        <Class IRI="#SushiProduct"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Sushi"/>
+        <Class IRI="#VType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#SushiProduct"/>
+        <Class IRI="#VType"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Vegan"/>
+        <Class IRI="#Vegetarian"/>
+    </DisjointClasses>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <ObjectProperty IRI="#isIngredientOf"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasVType"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Sushi"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSushi"/>
+        <Class IRI="#SushiProduct"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasVType"/>
+        <Class IRI="#SushiProduct"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isIngredientOf"/>
+        <Class IRI="#Ingredient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIngredient"/>
+        <Class IRI="#Ingredient"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSushi"/>
+        <Class IRI="#Sushi"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasVType"/>
+        <Class IRI="#VType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIngredientOf"/>
+        <Class IRI="#Sushi"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasKCal"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasPrice"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#isNew"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#isSpicy"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasKCal"/>
+        <Class IRI="#SushiProduct"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPrice"/>
+        <Class IRI="#SushiProduct"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isNew"/>
+        <Class IRI="#SushiProduct"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isSpicy"/>
+        <Class IRI="#SushiProduct"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasKCal"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPrice"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isNew"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isSpicy"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Aubergine</IRI>
+        <Literal>the purple egg-shaped fruit of a tropical Old World plant, which is eaten as a vegetable, an eggplant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Avocado</IRI>
+        <Literal>a pear-shaped fruit with a rough leathery skin, smooth oily edible flesh, and a large stone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Beetroot</IRI>
+        <Literal>甜菜</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Capelin</IRI>
+        <Literal>a small fish of the North Atlantic, resembling a smelt.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Caviar</IRI>
+        <Literal>the pickled roe of sturgeon or other large fish, eaten as a delicacy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Cereal</IRI>
+        <Literal>a grain used for food, such as wheat, oats, or corn.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Chive</IRI>
+        <Literal>a widely cultivated small Eurasian plant related to the onion, with purple-pink flowers and dense tufts of long tubular leaves that are used as a culinary herb.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Crumb</IRI>
+        <Literal>a small fragment of bread</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DairyProduct</IRI>
+        <Literal>milk and any of the foods made from milk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Garlic</IRI>
+        <Literal>a strong-smelling pungent-tasting bulb, used as a flavoring in cooking and in herbal medicine.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Ginger</IRI>
+        <Literal>a hot, fragrant spice made from the rhizome of a plant, which may be chopped or powdered for cooking, preserved in syrup, or candied.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Hoisin</IRI>
+        <Literal>a sweet, spicy, dark red sauce made from soybeans, vinegar, sugar, garlic, and various spices, widely used in southern Chinese cooking.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Lettuce</IRI>
+        <Literal>a cultivated plant of the daisy family, with edible leaves that are a usual ingredient of salads.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Masago</IRI>
+        <Literal>Masago is the roe of capelin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#NigiriPlate</IRI>
+        <Literal>The product using plate made from Nigiri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Nori</IRI>
+        <Literal>an edible seaweed, eaten either fresh or dried in sheets, especially by the Japanese.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Panko</IRI>
+        <Literal>a small fragment of bread</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Parmesan</IRI>
+        <Literal>a hard, dry cheese used in grated form, especially on Italian dishes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Pesto</IRI>
+        <Literal>意大利松子青酱</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Ponzu</IRI>
+        <Literal>a Japanese dipping sauce made from soy sauce, lime juice, vinegar, and fish flakes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Prawn</IRI>
+        <Literal>a marine crustacean which resembles a large shrimp.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RollPlate</IRI>
+        <Literal>The product using plate made from Roll</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Salmon</IRI>
+        <Literal>a large edible fish that is a popular game fish, much prized for its pink flesh.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SashimiPlate</IRI>
+        <Literal>The product using plate made from Sashimi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Seasoning</IRI>
+        <Literal>salt, herbs, or spices added to food to enhance the flavor.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Seaweed</IRI>
+        <Literal>海藻</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Sesame</IRI>
+        <Literal>a tall annual herbaceous plant of tropical and subtropical areas of the Old World, cultivated for its oil-rich seeds.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Shichimi</IRI>
+        <Literal>Shichimi refers to the spicy Japanese condiment shichimi tōgarashi, which literally means “seven flavor chili pepper.”.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Shiso</IRI>
+        <Literal>an Asian plant of the mint family used as a culinary herb.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SoySauce</IRI>
+        <Literal>a sauce made with fermented soybeans, used in Chinese and Japanese cooking.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpringOnion</IRI>
+        <Literal>an onion taken from the ground before the bulb has formed, typically eaten raw in salad; a green onion.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Sriracha</IRI>
+        <Literal>a spicy sauce made with red chili and garlic, served especially with Vietnamese and Thai cuisine.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Surimi</IRI>
+        <Literal>fish (often pollock) that is minced to make a gelatinous paste that is then flavored, reformed into flakes, sticks, or other shapes, and colored.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Sushi</IRI>
+        <Literal>Sushi abstracted from the menu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SushiPlatter</IRI>
+        <Literal>The product using platter made from Sushi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SushiProduct</IRI>
+        <Literal>The products made from Sushi, which have many properties such as Price、VType、isNew、isSpicy etc. I just select a part of the products in the menu to display here.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Teriyaki</IRI>
+        <Literal>a mixture of soy sauce, sake, ginger, and other flavorings, used in Japanese cooking as a marinade or glaze.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Tonkatsu</IRI>
+        <Literal>a Japanese dish of pork filet that is breaded with panko breadcrumbs and deep fried. It is traditionally served with a dark savory tonkatsu sauce and shredded green cabbage.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Tuna</IRI>
+        <Literal>a large and active predatory schooling fish of the mackerel family. Found in warm seas, it is extensively fished commercially and is popular as a game fish.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#VType</IRI>
+        <Literal>Is a sushi Vegan or Vegetarian? VType means Vegan or Vegetarian</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Vinegar</IRI>
+        <Literal>a sour-tasting liquid containing acetic acid, obtained by fermenting dilute alcoholic liquids, typically wine, cider, or beer, and used as a condiment or for pickling.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Wakame</IRI>
+        <Literal>裙带菜</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Wasabi</IRI>
+        <Literal>a Japanese plant with a thick green root which tastes like strong horseradish and is used in cooking, especially in powder or paste form as an accompaniment to raw fish.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasIngredient</IRI>
+        <Literal>What ingredients a sushi has</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasKCal</IRI>
+        <Literal>How much calories a sushi has</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasPrice</IRI>
+        <Literal>How much is a sushi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasSushi</IRI>
+        <Literal>The sushis a SushiPlatter contains</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasVType</IRI>
+        <Literal>The vegan type or Vegetarian type a sushi has</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isNew</IRI>
+        <Literal>Whether a sushi is a new product</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AnonymousIndividual nodeID="_:genid2147483648"/>
+        <IRI>#Ingredient</IRI>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
