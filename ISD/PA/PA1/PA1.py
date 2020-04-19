@@ -3,7 +3,7 @@
 @version: 
 @Author: Zhou Renzhe
 @Date: 2020-04-19 11:31:14
-@LastEditTime: 2020-04-19 14:20:50
+@LastEditTime: 2020-04-19 21:54:20
 '''
 import numpy as np
 
@@ -15,6 +15,7 @@ class DP_on_GridWorld():
         self.U_old=np.zeros((self.N,self.N))
         self.U_new=np.zeros((self.N,self.N))
         self.best_policy=np.array([['anydire' for i in range(self.N)] for j in range(self.N)])
+        #self.policy=np.ones((10,10,4))/4    #10x10矩阵的每个元素是一个1x4小矩阵，对应于策略pi采取上下左右行动的概率
         self.inplace_U=np.zeros((self.N,self.N))
         self.T=np.array([[0.7],[0.1],[0.1],[0.1]])
         self.award_pos=[(7,8),(2,7),(4,3),(7,3)]
@@ -74,7 +75,6 @@ class DP_on_GridWorld():
                     self.U_new[i,j]=max(U_s_list)
             iter+=1
             delta=self.U_new-self.U_old
-            delta=np.dot(delta,delta)
             if(np.linalg.norm(delta,ord=np.inf)<1e-10):
                 print("iter:%d,值迭代收敛,"%iter,end='')
                 break
@@ -110,12 +110,73 @@ class DP_on_GridWorld():
         print("最优策略：")
         print(self.best_policy)
     
+    def policy_evaluation(self,policy,n):
+        U_prev=np.zeros((self.N,self.N))
+        U_now=np.zeros((self.N,self.N))
+        iter=0
+        while iter<n:
+            for i in range(self.N):
+                for j in range(self.N):
+                    U_s=np.zeros((4,1))
+                    for k in range(4):
+                        if(policy[i,j,k]==0):
+                            U_s[k,0]=0
+                        else:
+                            U_s[k,0]=self.act(i,j,self.dire[k],U_prev)
+                    U_now[i,j]=policy[i,j].dot(U_s)
+            iter+=1
+            delta=U_now-U_prev
+            if(np.linalg.norm(delta,ord=np.inf)<1e-10):
+                break
+            U_prev=U_now.copy()
+        return U_now
+
+    def policy_iteration(self):
+        iter=0
+        policy_old=np.ones((self.N,self.N,4))/4
+        policy_new=np.ones((self.N,self.N,4))/4
+        U_pi=np.zeros((self.N,self.N))
+        while(iter<self.max_iter):
+            U_pi=self.policy_evaluation(policy_old,100)
+            for i in range(self.N):
+                for j in range(self.N):
+                    U_s_list=[]
+                    for k in range(4):
+                        U_s_list.append(self.act(i,j,self.dire[k],U_pi))
+                    max_action_index=[]
+                    for k in range(4):
+                        if(U_s_list[k]==max(U_s_list)):
+                            max_action_index.append(k)
+                    prob=1/len(max_action_index)
+                    for k in range(4):
+                        if k in max_action_index:
+                            policy_new[i,j,k]=prob
+                        else:
+                            policy_new[i,j,k]=0
+            iter+=1
+            if(np.all(policy_new==policy_old)):
+                print("iter:%d,策略迭代收敛,"%iter,end='')
+                break
+            policy_old=policy_new.copy()   #深拷贝
+        np.set_printoptions(precision=2,suppress=True)
+        print("gamma=%f,策略迭代结果:"%self.gamma)
+        print(U_pi)
+        best_pi=np.array([['anydire' for i in range(self.N)] for j in range(self.N)])
+        for i in range(self.N):
+            for j in range(self.N):
+                if (i,j) in self.award_pos:
+                    continue
+                k=np.argmax(policy_new[i,j])
+                best_pi[i,j]=self.dire[k]
+        print("最优策略：")
+        print(best_pi)
 
 
 def main():
-    dp=DP_on_GridWorld(gamma=0.9,max_iter=100)
+    dp=DP_on_GridWorld(gamma=0.5,max_iter=100)
     #dp.gauss_seidel_value_iteration()
     #dp.value_iteration()
+    dp.policy_iteration()
     
 if __name__=="__main__":
     main()
