@@ -256,6 +256,14 @@
 
 
 
+# Week10:Tableau,DLReasoning
+
++ 
+
+
+
+
+
 
 
 # Word
