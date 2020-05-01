@@ -148,7 +148,8 @@ class Game2048Env(gym.Env):
             msg = self.port.recv()
             assert msg == 'init_ok'
         self.render = render
-
+    
+    
     # UNTESTED
     def set(self, state, score=0):
         warnings.warn("Not recommended API", UserWarning)
@@ -217,6 +218,7 @@ class Game2048Env(gym.Env):
 
 
     def _checkBoard(self):
+        self.before_gen_state=copy.deepcopy(self.state)
         for i in range(4):
             for j in range(4):
                 if self.state[i][j] == 2048:
@@ -241,8 +243,8 @@ class Game2048Env(gym.Env):
                     return True
                 if board[3][3] == board[3][2] or board[3][3] == board[2][3]:
                     return True
-                if board[1][0] == board[2][0] or board[0][1] == board[0][2] or board[3][1] == board[3][2] or board[3][1] == \
-                        board[3][2]:
+                if board[1][0] == board[2][0] or board[0][1] == board[0][2] or board[3][1] == board[3][2] or board[1][3] == \
+                        board[2][3]:
                     return True
                 return False
             if not _canMove(self.state):
@@ -367,22 +369,41 @@ class Game2048GUI(QMainWindow):
 
 class Node(object):
     def __init__(self,env,state,parent,Q,N,last_action,avaliable_actions):
+        
         self.env=env
         self.state=state
         self.parent=parent
         self.Q=Q
         self.N=0
         self.last_action=last_action
-        self.avaliable_actions=[i for i in range(4)]   #avaliable_actions
+        self.avaliable_actions=avaliable_actions    #[i for i in range(4)]   #avaliable_actions
         self.children=[]
+
+        if self.parent==None:
+            p=[]
+            def get_avaliable_actions(env):
+                act_list=[]
+                for action in range(4):
+                    tmp=copy.deepcopy(env)
+                    tmp.step(action)
+                    p.append(tmp.prev_board)
+                    p.append(tmp.before_gen_state)
+                    if tmp.prev_board==tmp.before_gen_state:
+                        continue
+                    act_list.append(action)
+                return act_list
+            self.avaliable_actions=get_avaliable_actions(self.env)
 
     def select_child(self,c):  #根据UCT值选择孩子
         uct_value=[]
+        assert(len(self.children)!=0)
         for child in self.children:
             if child.N==0:
                 uct_value.append(math.inf)
-            else:
+            elif self.Q==0:
                 uct_value.append(child.Q/(self.Q+1)+c*math.sqrt(math.log(self.N+1)/child.N))
+            else:
+                uct_value.append(child.Q/self.Q+c*math.sqrt(math.log(self.N+1)/child.N))
         max_indexs=[]
         max_uct=max(uct_value)
         for i in range(len(uct_value)):
@@ -393,18 +414,27 @@ class Node(object):
         return self.children[max_index]
     
     def select_best_action(self):
+        if len(self.avaliable_actions)==0:
+            return random.choice([0,1,2,3])
+        if len(self.children)==0:
+            return random.choice(self.avaliable_actions)
         Q_list=[]
         action_list=[]
         for node in self.children:
             Q_list.append(node.Q)
             action_list.append(node.last_action)
         best_actions=[]
+        if len(Q_list)==0:
+            print(len(self.children))
+            print(self.state)
+            print(self.Q)
         max_q=max(Q_list)
         for i in range(len(Q_list)):
             if Q_list[i]==max_q:
                 best_actions.append(action_list[i])
         print(Q_list)
-        available_act=self.env.wrapper_action()
+        return random.choice(best_actions)
+        '''available_act=self.env.wrapper_action()
         if len(best_actions)==0 and len(available_act)==0:
             return random.randint(0,3)
         for i in range(len(best_actions)):
@@ -413,7 +443,7 @@ class Node(object):
         if len(best_actions)==0:
             return random.choice(available_act)
         else:
-            return random.choice(best_actions)
+            return random.choice(best_actions)'''
 
 
 class MCTS(object):
@@ -434,18 +464,34 @@ class MCTS(object):
             return node,False
         return node,True   #需要被扩展的node 
     
+    def get_avaliable_actions(self,env):
+        act_list=[]
+        for action in range(4):
+            tmp=copy.deepcopy(env)
+            tmp.step(action)
+            if tmp.prev_board==tmp.before_gen_state:
+                continue
+            act_list.append(action)
+        return act_list
+    
     def expand(self,node):
         for action in node.avaliable_actions:
             env=copy.deepcopy(node.env)
             obs,rew,done,info=env.step(action)
-            if rew>=16:
-                rew*=100
+            #if rew>=16:
+            #    rew*=100
             if info.get("success")==True:
                 rew+=200
             if info.get("success")==False and done==True:
-                rew=-500000
+                self.backup(node,-100)
+                continue
             
-            child=Node(copy.deepcopy(env),copy.deepcopy(obs),node,copy.deepcopy(rew),0,action,None)
+            env_copy=copy.deepcopy(env)
+            action_list=self.get_avaliable_actions(env)
+            if len(action_list)==0:
+                self.backup(node,-100)
+                continue
+            child=Node(env_copy,copy.deepcopy(obs),node,copy.deepcopy(rew),0,action,action_list)
             node.children.append(child)
     
     def rollout(self,node):
@@ -473,8 +519,12 @@ class MCTS(object):
     def train(self):
         for i in range(self.max_iter):
             node,flag=self.forward_search()
+            if flag==False:
+                continue
             if flag==True:
                 self.expand(node)
+                if len(node.children)==0:
+                    continue
                 node=node.select_child(self.c)
             R=self.rollout(node)
             self.backup(node,R)
@@ -496,10 +546,15 @@ if __name__ == '__main__':
         # 0, 1, 2, 3 mean up, down, left, right respectively
         #action = random.randint(0, 3)
         node=Node(copy.deepcopy(env),state,None,0,0,None,None)
-        agent=MCTS(node,10,0.3,0.9,50)
+        agent=MCTS(node,20,0.3,1,50)         
         action=agent.train()
         obs, rew, done, info = env.step(action)
         state=copy.deepcopy(obs)
         print(obs,rew, done, info)
     # remember to close the env, but you can always let resources leak on your own computer :|
     env.close()
+
+
+    '''参数：
+    10,0.3,0.9,50可以到达1024+512+256
+    '''
