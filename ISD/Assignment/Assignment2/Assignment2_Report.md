@@ -9,13 +9,35 @@
   + 
     
   
-+ **算法实现**：(具体实现详见`value&policy_iteration.py`文件)
++ **算法实现**：
 
   
 
   
 
-+ **实验结果**：![image-20200501153354352](C:\Users\Jaqen\AppData\Roaming\Typora\typora-user-images\image-20200501153354352.png)
++ **实验结果**：
+
+  ![image-20200502162820376](pic\image-20200502162820376.png)
 
 
 max_depth:50,c:0.1,max_iter:50，结果
+5 1 50
+[[4, 32, 4, 2], [128, 16, 1024, 16], [8, 512, 64, 128], [2, 4, 16, 4]] 2 True {'episode_length': 732, 'total_score': 7736, 'success': False}
+5 10 50
+[[4, 32, 4, 2], [128, 16, 1024, 16], [8, 512, 64, 128], [2, 4, 16, 4]] 2 True {'episode_length': 732, 'total_score': 7736, 'success': False}
+10 0.5 50
+[[4, 8, 16, 512], [32, 256, 1024, 32], [16, 32, 128, 8], [4, 16, 4, 2]] 2 True {'episode_length': 758, 'total_score': 8222, 'success': False}
+10 0.5 100
+[[8, 2, 4, 16], [256, 64, 16, 1024], [32, 16, 512, 8], [4, 8, 4, 2]] 2 True {'episode_length': 708, 'total_score': 7878, 'success': False}
+10 1 50
+[[4, 8, 16, 512], [32, 256, 1024, 32], [16, 32, 128, 8], [4, 16, 4, 2]] 2 True {'episode_length': 758, 'total_score': 8222, 'success': False}
+10 1 100
+[[8, 2, 4, 16], [256, 64, 16, 1024], [32, 16, 512, 8], [4, 8, 4, 2]] 2 True {'episode_length': 708, 'total_score': 7878, 'success': False}
+10 10 50
+[[4, 8, 16, 512], [32, 256, 1024, 32], [16, 32, 128, 8], [4, 16, 4, 2]] 2 True {'episode_length': 758, 'total_score': 8222, 'success': False}
+10 10 100
+[[8, 2, 4, 16], [256, 64, 16, 1024], [32, 16, 512, 8], [4, 8, 4, 2]] 2 True {'episode_length': 708, 'total_score': 7878, 'success': False}
+10 100 50
+[[4, 8, 16, 512], [32, 256, 1024, 32], [16, 32, 128, 8], [4, 16, 4, 2]] 2 True {'episode_length': 758, 'total_score': 8222, 'success': False}
+20 0.5 100
+[[2, 16, 32, 2], [4, 128, 512, 64], [32, 64, 32, 1024], [2, 4, 16, 4]] 2 True {'episode_length': 726, 'total_score': 7606, 'success': False}
