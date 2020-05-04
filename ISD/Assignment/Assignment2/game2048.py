@@ -12,6 +12,8 @@ from PyQt5.QtWidgets import (QMainWindow,QWidget,QPushButton,QDialog,
 from PyQt5.QtGui import QIcon,QFont
 from PyQt5.QtCore import Qt
 
+from MCTS import Node,MCTS,Logger
+
 
 class Game2048Env(gym.Env):
     # render: whether to display gui
@@ -23,7 +25,7 @@ class Game2048Env(gym.Env):
         self.done = False
         self.state = [[0, 0, 0, 0] for i in range(4)]
         self.score_dict = {}
-        for num in range(1, 11):
+        for num in range(1, 12):
             self.score_dict[2 ** num] = 2 ** (num - 1)
         self.episode_length = 0
         self.info = {}
@@ -32,6 +34,7 @@ class Game2048Env(gym.Env):
             self._run()
             msg = self.port.recv()
             assert msg == 'init_ok'
+    
     def reset(self):
         self.state = [[0, 0, 0, 0] for i in range(4)]
         self._generateNew(2)
@@ -149,7 +152,6 @@ class Game2048Env(gym.Env):
             assert msg == 'init_ok'
         self.render = render
     
-    
     # UNTESTED
     def set(self, state, score=0):
         warnings.warn("Not recommended API", UserWarning)
@@ -183,40 +185,6 @@ class Game2048Env(gym.Env):
         qt_game=Game2048GUI(port, remote_port)
         sys.exit(app.exec_())
     
-    def wrapper_action(self):
-        act_list=self.avaliable_action(self.state)
-        return act_list
-
-    def avaliable_action(self,board):
-        act_list=[]
-        for i in range(4):
-            for j in range(4):
-                if board[i][j] == 0:
-                    act_list=[0,1,2,3]
-                    return act_list
-        for i in range(1, len(board) - 1):
-            for j in range(1, len(board[0]) - 1):
-                if board[i][j] == board[i - 1][j] or board[i][j] == board[i + 1][j]:
-                    act_list.append(0)
-                    act_list.append(1)
-                if board[i][j] == board[i][j - 1] or board[i][j] == board[i][j + 1]:
-                    act_list.append(2)
-                    act_list.append(3)
-                if set(act_list)=={0,1,2,3}:
-                    return list(set(act_list))
-        if board[0][0] == board[0][1] or board[3][0] == board[3][1] or  board[0][3] == board[0][2] or board[3][3] == board[3][2] or \
-                board[0][1] == board[0][2] or board[3][1] == board[3][2]:
-            act_list.append(2)
-            act_list.append(3)
-        if set(act_list)=={0,1,2,3}:
-            return list(set(act_list))
-        if board[0][0] == board[1][0] or board[3][0] == board[2][0] or board[0][3] == board[1][3] or board[3][3] == board[2][3] or \
-                board[1][0] == board[2][0] or board[1][3]==board[2][3]:
-            act_list.append(0)
-            act_list.append(1)
-        return list(set(act_list))
-
-
     def _checkBoard(self):
         self.before_gen_state=copy.deepcopy(self.state)
         for i in range(4):
@@ -268,14 +236,6 @@ class Game2048Env(gym.Env):
                 if arr[i][j] == 0:
                     res.append([i, j])
         return res
-    
-    def evaluate_state(self):
-        count=0
-        for i in range(4):
-            for j in range(4):
-                if self.state[i][j]==0:
-                    count+=1
-        return count
 
 class Game2048GUI(QMainWindow):
     def __init__(self, port, remote_port):
@@ -293,8 +253,8 @@ class Game2048GUI(QMainWindow):
 
         # you can change to whatever you like :)
         self.color_dict[0]='white'
-        col = ['lightgrey','grey', 'pink', 'yellow', 'brown', 'red', 'violet', 'crimson', 'fuchsia'] * 100
-        for num in range(1, 11):
+        col = ['lightgrey','grey', 'pink', 'yellow', 'brown', 'red', 'violet', 'crimson', 'fuchsia','orange','green']
+        for num in range(1, 12):
             self.color_dict[2 ** num] = col[num - 1]
 
         self.state_font = QFont('Consolas', 20)
@@ -302,7 +262,7 @@ class Game2048GUI(QMainWindow):
         self.button_font = QFont('Consolas', 12)
 
         self.setGeometry(300, 300, 500, 550)
-        self.setWindowTitle("2048")
+        self.setWindowTitle("2048 : played by ZRZ using MCTS")
         self.center()
 
         self.scoreboard=QLabel(self)
@@ -310,12 +270,6 @@ class Game2048GUI(QMainWindow):
         self.scoreboard.move(30, 0)
         self.scoreboard.setFont(self.scoreboard_font)
         self.scoreboard.setText('Score:{}'.format(self.score))
-        # restart_button = QPushButton('Restart', self)
-        # restart_button.setFont(self.button_font)
-        # restart_button.resize(80, 30)
-        # restart_button.move(380, 25)
-        # restart_button.clicked.connect(self._restart)
-        # restart_button.setFocusPolicy(Qt.NoFocus)
 
         self._initBoardUI()
         self._updateBoardUI()
@@ -350,6 +304,7 @@ class Game2048GUI(QMainWindow):
                 self.state_labels[i][j].move(110 * j + 30, 110 *i+70)
 
     def _updateBoardUI(self):
+        win=False
         for i in range(4):
             for j in range(4):
                 col=self.color_dict[self.state[i][j]]
@@ -359,7 +314,12 @@ class Game2048GUI(QMainWindow):
                     txt=str(self.state[i][j])
                 self.state_labels[i][j].setText(txt)
                 self.state_labels[i][j].setStyleSheet('background-color:%s'%col)
-        self.scoreboard.setText('Score:{}'.format(self.score))
+                if self.state[i][i]==2048:
+                    win=True
+        if win==False:
+            self.scoreboard.setText('Score:{}'.format(self.score))
+        else:
+            self.scoreboard.setText('You Win!')
     
     def center(self):
         qr=self.frameGeometry()
@@ -371,222 +331,63 @@ class Game2048GUI(QMainWindow):
         QMessageBox.information(self, "Hint", "Please close the window from the console")
         event.ignore()
 
-
-class Node(object):
-    def __init__(self,env,state,parent,Q,N,last_action,avaliable_actions):
-        
-        self.env=env
-        self.state=state
-        self.parent=parent
-        self.Q=Q
-        self.N=0
-        self.last_action=last_action
-        self.avaliable_actions=avaliable_actions    #[i for i in range(4)]   #avaliable_actions
-        self.children=[]
-
-        if self.parent==None:
-            p=[]
-            def get_avaliable_actions(env):
-                act_list=[]
-                for action in range(4):
-                    tmp=copy.deepcopy(env)
-                    tmp.step(action)
-                    p.append(tmp.prev_board)
-                    p.append(tmp.before_gen_state)
-                    if tmp.prev_board==tmp.before_gen_state:
-                        continue
-                    act_list.append(action)
-                return act_list
-            self.avaliable_actions=get_avaliable_actions(self.env)
-
-    def select_child(self,c):  #根据UCT值选择孩子
-        uct_value=[]
-        assert(len(self.children)!=0)
-        for child in self.children:
-            if child.N==0:
-                uct_value.append(math.inf)
-            elif self.Q==0:
-                uct_value.append(child.Q/(self.Q+1)+c*math.sqrt(math.log(self.N+1)/child.N))
-            else:
-                uct_value.append(child.Q/self.Q+c*math.sqrt(math.log(self.N+1)/child.N))
-        max_indexs=[]
-        max_uct=max(uct_value)
-        for i in range(len(uct_value)):
-            if uct_value[i]==max_uct:
-                max_indexs.append(i)
-        #print("uct: ",uct_value)
-        max_index=random.choice(max_indexs)
-        return self.children[max_index]
-    
-    def select_best_action(self):
-        if len(self.avaliable_actions)==0:
-            return random.choice([0,1,2,3])
-        if len(self.children)==0:
-            return random.choice(self.avaliable_actions)
-        Q_list=[]
-        action_list=[]
-        for node in self.children:
-            Q_list.append(node.Q)
-            action_list.append(node.last_action)
-        best_actions=[]
-        max_q=max(Q_list)
-        for i in range(len(Q_list)):
-            if Q_list[i]==max_q:
-                best_actions.append(action_list[i])
-        print(Q_list)
-        return random.choice(best_actions)
-        '''available_act=self.env.wrapper_action()
-        if len(best_actions)==0 and len(available_act)==0:
-            return random.randint(0,3)
-        for i in range(len(best_actions)):
-            if best_actions[i] not in available_act:
-                del(best_actions[i])
-        if len(best_actions)==0:
-            return random.choice(available_act)
-        else:
-            return random.choice(best_actions)'''
-
-
-class MCTS(object):
-    def __init__(self,root,max_depth,c,gamma,max_iter):
-        self.root=root
-        self.c=c
-        self.gamma=gamma
-        self.max_depth=max_depth
-        self.max_iter=max_iter
-    
-    def forward_search(self):
-        node=self.root
-        i=0
-        while(len(node.children)!=0):
-            node=node.select_child(self.c)
-            i+=1
-        if i>self.max_depth:
-            return node,False
-        return node,True   #需要被扩展的node 
-    
-    def get_avaliable_actions(self,env):
-        act_list=[]
-        for action in range(4):
-            tmp=copy.deepcopy(env)
-            tmp.step(action)
-            if tmp.prev_board==tmp.before_gen_state:
-                continue
-            act_list.append(action)
-        return act_list
-    
-    def expand(self,node):
-        for action in node.avaliable_actions:
-            env=copy.deepcopy(node.env)
-            obs,rew,done,info=env.step(action)
-            #if rew>=16:
-            #    rew*=100
-            if info.get("success")==True:
-                rew+=200
-            if info.get("success")==False and done==True:
-                self.backup(node,-100)
-                continue
-            
-            env_copy=copy.deepcopy(env)
-            action_list=self.get_avaliable_actions(env)
-            if len(action_list)==0:
-                self.backup(node,-100)
-                continue
-            if node.env.episode_length>700:
-                count=node.env.evaluate_state()
-                rew+=count*400
-            child=Node(env_copy,copy.deepcopy(obs),node,copy.deepcopy(rew),0,action,action_list)
-            node.children.append(child)
-    
-    def rollout(self,node):
-        env=copy.deepcopy(node.env)
-        done=False
-        R=0
+'''100次随机测试，统计结果'''
+def test_100times(time_limit):
+    sys.stdout = Logger('stat.log', sys.stdout)
+    seed=[i for i in range(99,-1,-1)]
+    count_1024=0
+    count_2048=0
+    total_score=0
+    total_steps=0
+    time_limit=time_limit
+    cur_time=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    print("{}  Begin experiment with time limit {}".format(cur_time,time_limit))
+    for i in range(len(seed)):
+        env = Game2048Env(True) 
+        env.seed(seed[i])
+        env.reset()
+        done = False
+        info=None
+        state=copy.deepcopy(env.state)
+        #print("==================start training=======================")
         while not done:
-            action=random.randint(0,3)
-            obs,res,done,info=env.step(action)
-            R+=res
-        #ep_lenth=info.get("episode_lenth")
-        #score=info.get("total_score")
-        #print("R is ",R)
-        if info.get("success")==True:
-            R+=1000
-        return R
+            node=Node(None,None)
+            agent=MCTS(node,env,400)         
+            action=agent.train(time_limit)
+            obs, rew, done, info = env.step(action)
+            state=copy.deepcopy(obs)
+        if env.score>6000:
+            count_1024+=1
+        if info.get('success')==True:
+            count_2048+=1
+        total_score+=info.get('total_score')
+        total_steps+=info.get('episode_length')
+        print("seed[{}]:{}, 1024count:{}, 2048count:{}, average_score:{}, average_steps:{}, {}" \
+            .format(i,seed[i],count_1024,count_2048,total_score/(i+1),total_steps/(i+1),info))
+        #print("==================end training==========================")
+        env.close()
+    print("End experiment with time limit {}".format(time_limit))
 
-    def backup(self,node,R):
-        if node.parent==None:
-            return
-        node.N+=1
-        node.Q=(node.N-1)/node.N*node.Q+1/node.N*R
-        self.backup(node.parent,R)
-
-    def train(self):
-        for i in range(self.max_iter):
-            node,flag=self.forward_search()
-            if flag==False:
-                continue
-            if flag==True:
-                self.expand(node)
-                if len(node.children)==0:
-                    continue
-                node=node.select_child(self.c)
-            R=self.rollout(node)
-            self.backup(node,R)
-        best_action=self.root.select_best_action()
-        return best_action
-
-
-def train_():
-    depth=[5,10,20,30]
-    c=[0.5,1,10,100]
-    max_iter=[50,100,200]
-    for i in range(len(depth)):
-        for j in range(len(c)):
-            for k in range(len(max_iter)):
-                env = Game2048Env(True) 
-                env.seed(0)
-                env.reset()
-                done = False
-                obs=None
-                rew=0
-                info=None
-                state=copy.deepcopy(env.state)
-                print("=====================training===========================")
-                while not done:
-                    node=Node(copy.deepcopy(env),state,None,0,0,None,None)
-                    agent=MCTS(node,depth[i],0.3,c[j],max_iter[k])         
-                    action=agent.train()
-                    obs, rew, done, info = env.step(action)
-                    state=copy.deepcopy(obs)
-                print(depth[i],c[j],max_iter[k])
-                print(obs,rew, done, info)
-                print("==================end training==========================")
-                env.close()
-
-if __name__ == '__main__':
+def test(time_limit):
+    seed=[97,94,91,87,84]
     env = Game2048Env(True) 
-    # you can fix the seed for debugging, but your agent SHOULD NOT overfit to the env of a certain seed
-    env.seed(0)
-    # render is automatically set to False for copied envs
-    # remember to call reset() before calling step()
+    env.seed(seed[4])
     env.reset()
-    done = False
+    done=False
     state=copy.deepcopy(env.state)
     while not done:
-        # A random agent as example
-        # 0, 1, 2, 3 mean up, down, left, right respectively
-        #action = random.randint(0, 3)
-        node=Node(copy.deepcopy(env),state,None,0,0,None,None)
-        agent=MCTS(node,10,0.3,1,50)         
-        action=agent.train()
+        node=Node(None,None)
+        node.set_avaliable_actions(env)
+        agent=MCTS(node,env,400)         
+        action=agent.train(time_limit)
         obs, rew, done, info = env.step(action)
         state=copy.deepcopy(obs)
         print(obs,rew, done, info)
-    # remember to close the env, but you can always let resources leak on your own computer :|
+    print("done!")
+    time.sleep(30)
     env.close()
-    #train_()
 
 
-    '''参数：
-    10,0.3,0.9,50可以到达1024+512+256
-    '''
+if __name__ == '__main__':
+    test(1)
+    #test_100times(1)
