@@ -369,9 +369,8 @@ def test_100times(time_limit):
     print("End experiment with time limit {}".format(time_limit))
 
 def test(time_limit):
-    seed=[97,94,91,87,84]
     env = Game2048Env(True) 
-    env.seed(seed[4])
+    env.seed(0)
     env.reset()
     done=False
     state=copy.deepcopy(env.state)

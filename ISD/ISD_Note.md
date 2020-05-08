@@ -1149,6 +1149,10 @@
 + 伪代码：
 
   <img src="pic\image-20200421200237290.png" alt="image-20200421200237290" style="zoom:150%;" />
+  
+  附：
+  
+  ![](pic\mcts.png)
 
 
 
@@ -1204,7 +1208,6 @@
   \text{记为 } H(P)=\mathbf{E}_{x\sim P}[I(x)]=-\mathbf{E}_{x\sim P}[\log P(x)]
   $$
   
-
 + 相对熵：也称为Kullback-Leibler（KL）散度，表示同一个随机变量的两个不同分布间的距离
 
   + P(x), Q(x)：随机变量X的两个概率分布

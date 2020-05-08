@@ -3,7 +3,7 @@
 @version: 
 @Author: Zhou Renzhe
 @Date: 2020-04-27 20:53:45
-@LastEditTime: 2020-05-03 23:25:15
+@LastEditTime: 2020-05-08 09:36:56
 '''
 import numpy as np
 import math
@@ -91,11 +91,10 @@ class MCTS(object):
         return score_after-score_before
     
     def backup(self,node,R):
-        if node==None:
-            return
-        node.N+=1
-        node.Q+=R
-        self.backup(node.parent,R)
+        while node != None:
+            node.N+=1
+            node.Q+=R
+            node=node.parent
 
     def train(self,time_limit):
         t1=time.time()

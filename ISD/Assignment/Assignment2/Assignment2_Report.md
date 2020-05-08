@@ -79,11 +79,10 @@
     
       ```python
       def backup(self,node,R):
-          if node==None:
-              return
-          node.N+=1
-          node.Q+=R
-          self.backup(node.parent,R)
+          while node != None:
+            node.N+=1
+            node.Q+=R
+            node=node.paren
       ```
     
     + `train(time_limit)`：在迭代次数范围内不断训练，若超出时间限制，则强制退出，最后返回根节点的最优动作。
