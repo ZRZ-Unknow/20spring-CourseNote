@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: owlapi.fhkb.fspopulation.CW3Test
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 1.676 sec <<< FAILURE!
+testPopulate(owlapi.fhkb.fspopulation.CW3Test)  Time elapsed: 1.564 sec  <<< ERROR!
+java.lang.Error: Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+
+	at owlapi.fhkb.fspopulation.CW3.loadOntology(CW3.java:42)
+	at owlapi.fhkb.fspopulation.CW3Test.testPopulate(CW3Test.java:90)
+
+testLoad(owlapi.fhkb.fspopulation.CW3Test)  Time elapsed: 0.054 sec  <<< ERROR!
+java.lang.Error: Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+
+	at owlapi.fhkb.fspopulation.CW3.loadOntology(CW3.java:42)
+	at owlapi.fhkb.fspopulation.CW3Test.testLoad(CW3Test.java:33)
+
+testSave(owlapi.fhkb.fspopulation.CW3Test)  Time elapsed: 0.051 sec  <<< ERROR!
+java.lang.Error: Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+
+	at owlapi.fhkb.fspopulation.CW3.loadOntology(CW3.java:42)
+	at owlapi.fhkb.fspopulation.CW3Test.testSave(CW3Test.java:52)
+

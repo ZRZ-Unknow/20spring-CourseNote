@@ -258,11 +258,20 @@
 
 # Week10:Tableau,DLReasoning
 
-+ 
++ 见slides
 
 
 
+# Week11:DL Lite
 
++ TODO
+
+
+
+# Week12:RDF&OWL
+
++ RDF: Resource Description Framework
+  + 三元组：主谓宾   Simple triple based datamodel Subject, Predicate, Object
 
 
 

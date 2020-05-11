@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="3" failures="0" name="owlapi.fhkb.fspopulation.CW3Test" time="1.669" errors="3" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="12.0.2+10"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\20spring\知识表示与处理\Assignment\Assignment#3\cw3\fspopulation"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\20spring\知识表示与处理\Assignment\Assignment#3\cw3\fspopulation"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="java.runtime.version" value="12.0.2+10"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Jaqen\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Users\Jaqen\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf14699081779157996051.tmp"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk-12.0.2/bin/server;C:/Program Files/Java/jdk-12.0.2/bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Jaqen\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\lib\x64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\include;C:\Program Files\Java\jdk-12.0.2\bin;C:\Program Files\Java\jdk-12.0.2\jre\bin;D:\Programs\apache-maven-3.6.2\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\LaTex\texlive\2019\bin\win32;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\Git\cmd;D:\MATLAB\R2019a\runtime\win64;D:\MATLAB\R2019a\bin;C:\Users\Jaqen\x;C:\Users\Jaqen\x\Library\mingw-w64\bin;C:\Users\Jaqen\x\Library\usr\bin;C:\Users\Jaqen\x\Library\bin;C:\Users\Jaqen\x\Scripts;C:\Users\Jaqen\AppData\Local\Microsoft\WindowsApps;C:\Users\Jaqen\Microsoft VS Code\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\lib\x64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0;C:\Users\Jaqen\AppData\Local\BypassRuntm;D:\Programs\IntelliJ IDEA Community Edition 2019.2.2\bin;D:\Programs\IntelliJ IDEA 2019.2.2\bin;C:\Users\Jaqen\AppData\Local\Microsoft\WindowsApps;D:\latx\texlive\2019\bin\win32;C:\Users\Jaqen\AppData\Local\GitHubDesktop\bin;C:\Users\Jaqen\Desktop;;."/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="56.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Jaqen"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.specification.version" value="12"/>
+    <property name="user.name" value="Jaqen"/>
+    <property name="java.class.path" value="C:\Users\Jaqen\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_1.15.0.20200310-1832\jars\plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="12"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B install"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="12.0.2"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\20spring\知识表示与处理\Assignment\Assignment#3\cw3\fspopulation\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2019-07-16"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="owlapi.fhkb.fspopulation.CW3Test" name="testPopulate" time="1.564">
+    <error message="Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+" type="java.lang.Error">java.lang.Error: Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+
+	at owlapi.fhkb.fspopulation.CW3.loadOntology(CW3.java:42)
+	at owlapi.fhkb.fspopulation.CW3Test.testPopulate(CW3Test.java:90)
+</error>
+    <system-err>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+</system-err>
+  </testcase>
+  <testcase classname="owlapi.fhkb.fspopulation.CW3Test" name="testLoad" time="0.054">
+    <error message="Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+" type="java.lang.Error">java.lang.Error: Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+
+	at owlapi.fhkb.fspopulation.CW3.loadOntology(CW3.java:42)
+	at owlapi.fhkb.fspopulation.CW3Test.testLoad(CW3Test.java:33)
+</error>
+  </testcase>
+  <testcase classname="owlapi.fhkb.fspopulation.CW3Test" name="testSave" time="0.051">
+    <error message="Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+" type="java.lang.Error">java.lang.Error: Unresolved compilation problem: 
+	The method loadOntology(IRI) in the type OWLOntologyManager is not applicable for the arguments (InputStream)
+
+	at owlapi.fhkb.fspopulation.CW3.loadOntology(CW3.java:42)
+	at owlapi.fhkb.fspopulation.CW3Test.testSave(CW3Test.java:52)
+</error>
+  </testcase>
+</testsuite>
