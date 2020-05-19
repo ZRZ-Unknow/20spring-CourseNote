@@ -1474,3 +1474,134 @@
 
   <img src="pic\image-20200514214929099.png" alt="image-20200514214929099" style="zoom:80%;" />
 
+### 资格迹
+
++ $\lambda$回报：各目标值的一种特殊加权平均组合
+  $$
+  G_t^\lambda=(1-\lambda)\sum_{n=1}^\infin \lambda^{n-1}G_{t:t+n}=(1-\lambda)\sum_{n=1}^{T-t-1} \lambda^{n-1}G_{t:t+n}+\lambda^{T-t-1}G_t\quad (G_{t:t+n}=G_t,t+n\geq T)
+  $$
+  $\lambda\rightarrow0,G_t^\lambda\rightarrow G_{t:t+1}$，趋于一步TD更新的目标值
+
+  $\lambda\rightarrow1,G_t^\lambda\rightarrow G_{t}$，趋于MC更新的目标值
+
++ 离线$\lambda$回报算法：使用$G_t^\lambda$作为目标值更新;
+  $$
+  U(S_t)=U(S_t)+\alpha(G_t^\lambda-U(S_t))
+  $$
+  是一种向前看的观点：在当前时刻往t+1,t+2,...时刻看，将其回报做加权组合，所谓离线，就是等到一个情节结束后，在 每个状态计算状态值的变化，更新轨迹上所有状态的值
+
++ 资格迹：
+
+  + 累积迹：
+
+    <img src="pic\image-20200519020300186.png" alt="image-20200519020300186" style="zoom:67%;" />
+
+  + 替代迹：
+
+    <img src="pic\image-20200519020350037.png" alt="image-20200519020350037" style="zoom:67%;" />
+
+  + 荷兰迹：
+
+    <img src="pic\image-20200519020440407.png" alt="image-20200519020440407" style="zoom:67%;" />
+
++ TD($\lambda$)算法：
+
+  <img src="pic\image-20200519020951826.png" alt="image-20200519020951826" style="zoom:67%;" />
+
+  使用累积迹的伪代码：
+
+  <img src="pic\image-20200519021034228.png" alt="image-20200519021034228" style="zoom: 67%;" />
+
++ Sarsa($\lambda$)算法：
+
+  <img src="pic\image-20200519021153270.png" alt="image-20200519021153270" style="zoom: 67%;" />
+
+  使用累积迹的伪代码：
+
+  <img src="pic\image-20200519021246462.png" alt="image-20200519021246462" style="zoom: 67%;" />
+
++ Q($\lambda$)算法：前向看过程在第一个非贪心行动处终止。
+
+  + 如果$A_{t+1}$是非贪心行动，则用Q学习的更新公式更新Q值
+
+  + 如果$A_{t+n}$是第一个非贪心行动，则最长TD更新的目标值为$R_t+\gamma R_{t+1}+\cdots+\gamma^{n-1}R_{t+n-1}+\gamma^n\max_a Q_t(S_{t+n},a)$。
+
+  + <img src="pic\image-20200519021953707.png" alt="image-20200519021953707" style="zoom: 67%;" />
+
+    如果为非贪心行动，则资格迹清0
+
+  + 伪代码：
+
+    <img src="pic\image-20200519022207269.png" alt="image-20200519022207269" style="zoom:67%;" />
+
+    
+
+## 5.4 泛化
+
++ 基于模型或免模型的方法都认为所有状态行动值函数可以用一张表表示，导致只能在小的离散问题上使用，在大规模的问题上，Agent需要学会泛化能力，能把有限的经验泛化到没访问过的状态。
+
+### 半梯度预测和控制
+
++ 随机梯度下降：
+
+  <img src="pic\image-20200519022952160.png" alt="image-20200519022952160" style="zoom:67%;" />
+
+  <img src="pic\image-20200519023149202.png" alt="image-20200519023149202" style="zoom:67%;" />
+
+  + 方法一：使用蒙特卡洛更新的目标值$G_t$作为$U_t$。
+
+    <img src="pic\image-20200519023245010.png" alt="image-20200519023245010" style="zoom: 80%;" />
+
+  + 方法二：使用1步TD更新的目标值作为$U_t$。
+
+    <img src="pic\image-20200519023535593.png" alt="image-20200519023535593" style="zoom: 67%;" />
+
+    假设后面那个梯度为0。伪代码：
+
+    <img src="pic\image-20200519023704975.png" alt="image-20200519023704975" style="zoom:67%;" />
+
+  + n步半梯度TD、使用累积迹的半梯度TD($\lambda$)、半梯度Sarsa、n步半梯度Sarsa、结合二值特征和线性函数近似的Sarsa($\lambda$)：见slides
+
+### 近似和抽象
+
++ 假设：相互接近的状态可能有相似的行动值
+
+  <img src="pic\image-20200519024249840.png" alt="image-20200519024249840" style="zoom:67%;" />
+
+  <img src="pic\image-20200519024520793.png" alt="image-20200519024520793" style="zoom:67%;" />
+
++ 线性近似Q学习：
+
+  <img src="pic\image-20200519024634981.png" alt="image-20200519024634981" style="zoom:67%;" />
+
++ 全局近似：
+
+  + 感知机Q学习：
+
+    <img src="pic\image-20200519024920994.png" alt="image-20200519024920994" style="zoom:67%;" />
+
+  + 抽象方法：
+
+    + 抽象方法倾向使用基于模型的学习，通常比免模型学习更快收敛
+
+    + 把状态空间分割成离散的区域，估计每个区域的行动值
+      + 通常使用决策树来分割状态空间
+      + 树的内部结点是对状态空间不同维度的测试
+      + 叶子结点对应区域
+
+### 深度Q网络
+
++ 使用两个技术来解决神经网络在RL中的发散问题：
+
+  + 经验回放：将经验元组(s,a,s',r)存储起来，再按一定的规则从中采样
+
+  + 两个结构完全相同的Q网络
+
+    + 评价网络：计算回报的预测值，每次迭代都更新其权重
+    + 目标网络：作为学习的目标，用于解决训练不稳定的问题
+    + 目标网络是不会在每次迭代都变化，是一个固定的目标；在完成一定次数的更新后，再将评价网络的权重赋给目标网络，进而进行下一批更新
+
+  + 伪代码：
+
+    ![image-20200519030123959](pic\image-20200519030123959.png)
+
