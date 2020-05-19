@@ -3,7 +3,7 @@
 @version: 
 @Author: Zhou Renzhe
 @Date: 2020-04-27 20:53:45
-@LastEditTime: 2020-05-08 09:36:56
+@LastEditTime: 2020-05-19 13:35:11
 '''
 import numpy as np
 import math
@@ -98,19 +98,17 @@ class MCTS(object):
 
     def train(self,time_limit):
         t1=time.time()
+        t2=time.time()
         for i in range(self.max_iter):
             node=self.forward_search()
             node=self.expand(node)
             R=self.rollout()
             self.backup(node,R)
             t2=time.time()
-            if self.env.score>7000:
-                if (t2-t1)>2*time_limit:
-                    break
-                else:
-                    continue
-            if (t2-t1)>time_limit:
+            if (t2-t1)>=time_limit:
                 break
+        if (t2-t1)<time_limit:
+            time.sleep(time_limit-t2+t1)
         best_action=self.root.select_best_action()
         return best_action
 

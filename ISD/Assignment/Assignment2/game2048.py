@@ -389,4 +389,3 @@ def test(time_limit):
 
 if __name__ == '__main__':
     test(1)
-    #test_100times(1)
