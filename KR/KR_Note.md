@@ -275,6 +275,25 @@
 
 
 
+# Week14:OBDA
+
++ Ontology Based Data Access：
+
+  + An ontology provides meta-information about the data and the vocabulary used to query the data. It can impose constraints on the data.
+  + Actual data can be incomplete w.r.t. such meta-information and constraints. So data should be stored using open world semantics rather than closed world semantics: use ABoxes instead of relational database instances.
+  + During query answering, the system has to take into account the ontology
+  + 相当于一个database with ontology
+
++ <img src="pic\image-20200519142204442.png" alt="image-20200519142204442" style="zoom: 67%;" />
+
+  
+
+
+
+
+
+
+
 # Word
 
 tractable ：易处理的，能在多项式时间内解决
