@@ -1,0 +1,265 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{mathtools}
+\usepackage{pifont}
+\usepackage{dashbox}
+\usepackage{xspace}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{url}
+%\usepackage{extsizes}
+% the following package is optional:
+\usepackage{latexsym}
+%\usepackage{mathptmx}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{enumerate}
+
+\setlength\parindent{0pt}
+
+\newcommand{\alc}{$\mathcal{ALC}$\xspace}
+\newcommand{\el}{$\mathcal{EL}$\xspace}
+
+\title{Assignment\#4}
+\author{Yizheng Zhao}
+\date{May 13, 2020}
+
+\begin{document}
+
+\maketitle
+
+\textcolor{red}{Note: Assignment\#4 contributes to 10\% of the total mark of the course.\\
+Deadline: June 2, 2020 before 14:00.\\
+Submission: Submit your work as an A\#4-XXX.zip file, for XXX your student ID, via PedagogySquare platform. The zip file should contain a single .pdf file.}\\
+
+Q1. Recall the syntax of the Description Logics \el, DL-Lite and \alc. Suppose \textsf{Teacher} and \textsf{Course} are concept names and \textsf{teaches} is a role name.
+
+Let $\mathcal{E}$ be any of the following expressions:
+\begin{itemize}
+    \item[(a)] $\top\sqsubseteq\bot$
+    \item[(b)] $\exists\textsf{teaches.Course}\sqsubseteq\textsf{Teacher}$
+    \item[(c)] $\forall\textsf{teaches.Course}$
+    \item[(d)] $\exists\textsf{Course.teaches}$
+    \item[(e)] $\exists\textsf{teaches}^{-}.\top\sqsubseteq\textsf{Teacher}\sqcup\textsf{School}$
+    \item[(f)] $\textsf{Teacher}\sqsubseteq\exists\textsf{teaches}.\top$
+    \item[(g)] $\textsf{Teacher}\sqsubseteq\exists\textsf{teaches}.\bot$
+    \item[(h)] $\geq\textsf{3 teaches}.\top\sqsubseteq\textsf{Teacher}$
+    \item[(i)] $\geq\textsf{4 teaches.Course}\sqsubseteq\textsf{Teacher}$
+    \item[(j)] $\forall\textsf{teaches}.\top\sqsubseteq\exists\textsf{teaches.Course}$
+    \item[(k)] $\exists\textsf{teaches}.\top\sqsubseteq\geq\textsf{2 teaches}.\top$
+    \item[(l)] $\geq\textsf{2 teaches}.\top\sqsubseteq\exists\textsf{teaches}.\top$
+\end{itemize}
+
+\begin{itemize}
+    \item[$\bullet$] Translate $\mathcal{E}$ into natural language (1 mark per each);
+    \begin{itemize}
+    \item[(a)] Thing belongs to nothing.
+    \item[(b)] Object that teaches a course belongs to teacher.
+    \item[(c)] Everything that teaches course.
+    \item[(d)] This is not a valid concept.
+    \item[(e)] Object that being teached is either a teacher or a school
+    \item[(f)] Teacher is kind of object that teaches something.
+    \item[(g)] Teacher is kind of object that teaches nothing.
+    \item[(h)] All objects teaches at least 3 things is kind of Teacher.
+    \item[(i)] All objects teaches at least 4 courses is kind of Teacher.
+    \item[(j)] Everything that teaches something belongs to the object that teaches course.
+    \item[(k)] Object that teaches something belongs to the object teaches at least 2 things.
+    \item[(l)] Object teaches at least 2 things belongs to the object that teaches things.
+    \end{itemize}
+
+    \item[$\bullet$] State whether it is (1 mark per each);
+    \begin{itemize}
+        \item[-] an \el concept;
+        \item[-] an \el concept inclusion;
+        \item[-] a DL-Lite concept;
+        \item[-] a DL-Lite concept inclusion;
+        \item[-] an \alc concept;
+        \item[-] an \alc concept inclusion;
+        \item[-] none of the above.
+    \end{itemize}
+    \begin{itemize}
+    \item[(a)] an \alc concept inclusion and a DL-Lite concept inclusion;
+    \item[(b)] an \el concept inclusion and an \alc concept inclusion;
+    \item[(c)] an \alc concept;
+    \item[(d)] none of the above;
+    \item[(e)] none of the above;
+    \item[(f)] an \el concept inclusion and an \alc concept inclusion and a DL-Lite concept inclusion;
+    \item[(g)] an \alc concept inclusion;
+    \item[(h)] a DL-Lite concept inclusion;
+    \item[(i)] none of the above;
+    \item[(j)] an \alc concept inclusion;
+    \item[(k)] a DL-Lite concept inclusion;
+    \item[(l)] a DL-Lite concept inclusion;
+\end{itemize}
+    \item[$\bullet$] If $\mathcal{E}$ is a concept inclusion, check whether $\mathcal{E}$ follows from the empty TBox (i.e., $\emptyset\models\mathcal{E}$). If this is not the case, define an interpretation $\mathcal{I}$ such that $\mathcal{I}\not\models\mathcal{E}$ (1 mark per each)
+        \begin{itemize}
+    \item[(a)] $\mathcal{E}$ not follows from the empty TBox. We can make $\top^\mathcal{I}=\{a\}$,$\bot^\mathcal{I}=\emptyset$.
+    \item[(b)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z\}$,$Teacher^\mathcal{I}=\{x\}$,$Course^\mathcal{I}=
+         \{y,z\}$,$teaches^\mathcal{I}=\{(z,y)\}$.
+    \item[(e)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z\}$,$Teacher^\mathcal{I}=\{z\}$,$Course^\mathcal{I}=
+         \{y\}$,$School^\mathcal{I}=\{y\}$,$teaches^\mathcal{I}=\{(z,y)\}$.
+    \item[(f)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z\}$,$Teacher^\mathcal{I}=\{x\}$,$Course^\mathcal{I}=
+         \{y,z\}$,$teaches^\mathcal{I}=\{(z,y)\}$.
+    \item[(g)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y\}$,$Teacher^\mathcal{I}=\{x\}$,
+        $teaches^\mathcal{I}=\{(y,\emptyset)\}$.
+    \item[(h)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z,i,j\}$,$Teacher^\mathcal{I}=\{x\}$,$\lnot Teacher^\mathcal{I}=\{y,z,i,j,\}$
+        $teaches^\mathcal{I}=\{(y,z),(y,i),(y,j)\}$.
+    \item[(i)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z,i,j,k\}$,$Teacher^\mathcal{I}=\{x\}$,$\lnot Teacher^\mathcal{I}=\{y,z,i,j,k\}$,$Course^\mathcal{I}=
+        \{z,i,j,k\}$,$teaches^\mathcal{I}=\{(y,z),(y,i),(y,j),(y,k)\}$.
+    \item[(j)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z,k\}$,$Course^\mathcal{I}=
+        \{z\}$,$teaches^\mathcal{I}=\{(x,z),(k,y)\}$.
+    \item[(k)] $\mathcal{E}$ not follows from the empty TBox. We can make $\Delta^\mathcal{I}=\{x,y,z,k\}$,$teaches^\mathcal{I}=\{(x,z),(x,y),(k,z)\}$.
+    \item[(l)] $\mathcal{E}$ follows from the empty TBox.
+\end{itemize}
+    \item[$\bullet$] If $\mathcal{E}$ is a concept, check whether $\mathcal{E}$ is satisfiable. If this is the case, define an interpretation $\mathcal{I}$ such that $\mathcal{E}^{\mathcal{I}}\not=\emptyset$ (1 mark per each).
+        \begin{itemize}
+    \item[(c)] $\mathcal{E}$ is satisfiable.We can make $\Delta^\mathcal{I}=\{x,y,z\}$,$Course^\mathcal{I}=\{y,z\}$,$teaches^\mathcal{I}=\{(x,z),(x,y)\}$.
+    \item[(d)] This is not a valid concept.
+\end{itemize}
+\end{itemize}
+
+
+Q2. Show that every \el-TBox is satisfiable (consistent). That is, show that for every \el-TBox $\mathcal{T}$ there exists an interpretation $\mathcal{I}$ such that $\mathcal{I}\models\mathcal{T}$ (10 marks).\\\\
+Assume that the \el-TBox is in normal form, for every concept inclusions $A\sqsubseteq B$ in \el-TBox, we can constructively make an interpretation $\mathcal{I}$ such that $A^\mathcal{I} \sqsubseteq B^\mathcal{I}$. Therefore, $\mathcal{I}\models\mathcal{T}$, which means every \el-TBox is satisfiable. \\\\
+Q3. Consider the database instance $\mathcal{D}_{\textsf{PGBBW}}$ (\textsf{PGBBW} stands for \textsf{Pleasant Goat and Big Big Wolf}) given by:
+
+\begin{itemize}
+    \item[] \textsf{Sheep(weslie)}\quad\textsf{Sheep(slowy)}\quad\textsf{LazySheep(paddi)}
+    \item[] \textsf{Sheep(tibbie)}\quad\textsf{BrownSheep(fitty)}\quad\textsf{Sheep(jonie)}
+    \item[] \textsf{Wolf(wolffy)}\quad\textsf{Wolf(wolnie)}\quad\textsf{Wolf(wilie)}
+    \item[] \textsf{hasFriend(weslie, slowy)}\quad\textsf{hasFriend(tibbie, jonie)}
+    \item[] \textsf{hasEnemy(paddi, wolffy)}\quad\textsf{hasWife(wolffy, wolnie)}\quad\textsf{hasSon(wolnie, wilie)}
+\end{itemize}
+
+\noindent We query $\mathcal{D}_{\textsf{PGBBW}}$ under closed world assumption (relational database semantics) and under open world assumption. Recall that under the closed world assumption we consider the interpretation $\mathcal{I}:=\mathcal{I}_{\mathcal{D}_{\textsf{PGBBW}}}$ defined as follows:
+
+\begin{itemize}
+    \item[-] $\Delta^{\mathcal{I}}=\{\textsf{weslie, slowy, paddi, tibbie, fitty, jonie, wolffy, wolnie, wilie}\}$
+    \item[-] $\textsf{Sheep}^{\mathcal{I}}=\{\textsf{weslie, slowy, tibbie, jonie}\}$
+    \item[-] $\textsf{LazySheep}^{\mathcal{I}}=\{\textsf{paddi}\}$
+    \item[-] $\textsf{BrownSheep}^{\mathcal{I}}=\{\textsf{fitty}\}$
+    \item[-] $\textsf{Wolf}^{\mathcal{I}}=\{\textsf{wolffy, wolnie, wilie}\}$
+    \item[-] $\textsf{hasFriend}^{\mathcal{I}}=\{(\textsf{weslie, slowy}),(\textsf{tibbie, jonie})\}$
+    \item[-] $\textsf{hasEnemy}^{\mathcal{I}}=\{(\textsf{paddi, wolffy})\}$
+    \item[-] $\textsf{hasWife}^{\mathcal{I}}=\{(\textsf{wolffy, wolnie})\}$
+    \item[-] $\textsf{hasSon}^{\mathcal{I}}=\{(\textsf{wolnie, wilie})\}$
+\end{itemize}
+
+Consider the following Boolean queries (in description logic notation).
+
+\begin{itemize}
+    \item[(a)] \textsf{Sheep(fitty)}
+    \item[(b)] \textsf{Sheep(wolnie)}
+    \item[(c)] \textsf{Sheep(paddi)}
+    \item[(d)] $\neg\textsf{Sheep(paddi)}$
+    \item[(e)] $(\exists\textsf{hasFriend.}\top)\textsf{(weslie)}$
+    \item[(f)] $(\exists\textsf{hasFriend.Sheep})\textsf{(weslie)}$
+    \item[(g)] $(\exists\textsf{hasFriend.LazySheep})\textsf{(weslie)}$
+    \item[(h)] $(\textsf{BrownSheep}\sqcap\neg\textsf{LazySheep)(fitty)}$
+    \item[(i)] $(\textsf{BrownSheep}\sqcap\neg\textsf{Sheep)(fitty)}$
+    \item[(j)] \textsf{Sheep(wilie)}
+    \item[(k)] $(\exists\textsf{hasSon.}\neg\textsf{Sheep)(wolnie)}$
+    \item[(l)] $(\exists\textsf{hasEnemy.}\exists\textsf{hasWife.}\textsf{Wolf)(paddi)}$
+\end{itemize}
+
+\begin{itemize}
+    \item[$\bullet$] Write those Boolean queries in first-order logic (FOL) notation. (Note that
+for many queries there is no difference between description logic notation
+and FOL notation) (1 mark per each).
+\begin{itemize}
+    \item[(a)] \textsf{Sheep(fitty)}
+    \item[(b)] \textsf{Sheep(wolnie)}
+    \item[(c)] \textsf{Sheep(paddi)}
+    \item[(d)] $\neg\textsf{Sheep(paddi)}$
+    \item[(e)] $\exists \textsf{x.hasFriend}\textsf{(weslie,x)}$
+    \item[(f)] $\exists \textsf{x.}(\textsf{hasFriend}\textsf{(weslie,x)}\wedge\textsf{Sheep(x)})$
+    \item[(g)] $\exists \textsf{x.}(\textsf{hasFriend}\textsf{(weslie,x)}\wedge\textsf{LazySheep(x)})$
+    \item[(h)] $(\textsf{BrownSheep}\wedge\neg\textsf{LazySheep)(fitty)}$
+    \item[(i)] $(\textsf{BrownSheep}\wedge\neg\textsf{Sheep)(fitty)}$
+    \item[(j)] \textsf{Sheep(wilie)}
+    \item[(k)] $\exists \textsf{x.}(\textsf{hasSon}\textsf{(wolnie,x)}\wedge\neg\textsf{Sheep}(x))$
+    \item[(l)] $\exists\textsf{x.}(\textsf{hasEnemy(paddi,x)}\wedge\exists\textsf{y.}(
+         \textsf{hasWife(x,y)}\wedge\textsf{Wolf(y)))}$
+\end{itemize}
+
+\item[$\bullet$] Query answering under closed world assumption: check for each Boolean F whether the answer
+to the query F given by $\mathcal{D}_{\textsf{PGBBW}}$ is ``Yes'' or ``No''. In other words, check whether $\mathcal{I}\models F$ or $\mathcal{I}\models\neg F$ (1 mark per each).
+\begin{itemize}
+    \item[(a)] No
+    \item[(b)] No
+    \item[(c)] No
+    \item[(d)] Yes
+    \item[(e)] Yes
+    \item[(f)] Yes
+    \item[(g)] No
+    \item[(h)] Yes
+    \item[(i)] Yes
+    \item[(j)] No
+    \item[(k)] Yes
+    \item[(l)] Yes
+\end{itemize}
+\item[$\bullet$] Query answering under open world assumption: check for each Boolean query F whether the certain answer to F given by $\mathcal{D}_{\textsf{PGBBW}}$ is ``Yes'', ``No'', or ``Don't know''. In other words, check whether $\mathcal{D}\models F$ or $\mathcal{D}\models\neg F$ or neither of these hold (1 mark per each).
+    \begin{itemize}
+    \item[(a)] Don't know.
+    \item[(b)] Don't know.
+    \item[(c)] Don't know.
+    \item[(d)] Don't know.
+    \item[(e)] Yes
+    \item[(f)] Yes
+    \item[(g)] Don't know.
+    \item[(h)] Don't know.
+    \item[(i)] Don't know.
+    \item[(j)] Don't know.
+    \item[(k)] Don't know.
+    \item[(l)] Yes.
+\end{itemize}
+\end{itemize}
+
+Consider the following non-Boolean queries $F_{i}$:
+
+\begin{itemize}
+    \item[(a)] $F_{1}(x)=\textsf{Wolf}(x)$
+    \item[(b)] $F_{2}(x)=\neg\textsf{Sheep}(x)$
+    \item[(c)] $F_{3}(x,y)=\textsf{hasFriend}(x,y)$
+    \item[(d)] $F_{4}(x)=\textsf{Sheep}(x)\wedge\neg\textsf{hasFriend}(x,\textsf{jonie})$
+\end{itemize}
+
+For each query $F_{i}$, give
+
+\begin{itemize}
+    \item[$\bullet$] for closed world assumption: \textsf{answer($F_{i}$,$\mathcal{D}_{\textsf{PGBBW}}$)} (1 mark per each);
+    \begin{itemize}
+    \item[(a)] \textsf{answer($F_{1}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\{wolffy, wolnie, wilie\}}
+    \item[(b)] \textsf{answer($F_{2}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\{paddi, fitty, wolffy, wolnie, wilie\}}
+    \item[(c)] \textsf{answer($F_{3}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\{(weslie, slowy),(tibbie, jonie)\}}
+    \item[(d)] \textsf{answer($F_{4}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\{weslie, slowy, jonie\}}
+\end{itemize}
+    \item[$\bullet$] for open world assumption: \textsf{certanswer($F_{i}$,$\mathcal{D}_{\textsf{PGBBW}}$)} (1 mark per each).
+    \begin{itemize}
+    \item[(a)] \textsf{certanswer($F_{1}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\{wolffy, wolnie, wilie\}}
+    \item[(b)] \textsf{certanswer($F_{2}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\textsf{$\emptyset$}}
+    \item[(c)] \textsf{certanswer($F_{3}$,$\mathcal{D}_{\textsf{PGBBW}}$)=\{(weslie, slowy),(tibbie, jonie)\}}
+    \item[(d)] \textsf{certanswer($F_{4}$,$\mathcal{D}_{\textsf{PGBBW}}$)=$\emptyset$}
+\end{itemize}
+\end{itemize}
+
+Q4. Clarify, in your own words, the distinctions between closed world assumption (CWA) and open world assumption (OWA). When do CWA and OWA apply? Illustrate with an example how CWA and OWA lead to a distinction when applying them to a data/knowledge base (approx. 500 words, 10 marks).\\\\
+  $\quad$ The most important difference between CWA and OWA is that CWA thinks that things that are not stated must be false and OWA assumps that in this case the answer is "don't know". This means, in CWA, if a thing is not known to us, then it is false; in OWA, it may be true or false which means we don't know.
+   \\
+ When we are building a database or knowledge base, if we have detailed information about the system, then CWA should be applied. For example, there is a student score management program with a student A in the database but A do not have ICS (a course in NJU) score. If we query "Student A's ICS score is 99", under CWA, it will return false, because student A's ICS score is not stated so it is false, but under OWA, it will return "don't know". According to our needs, obviously when a student does not have a grade in a certain course, it means that he or she does not take such a course, then query his grade in this course is naturally false. From the perspective of school, the school has complete information about the students, so this database should use CWA. \\
+  On the other hand, when we don't have complete information about the system, OWA should be applied. For example, we have a knowledge base about physics, we have a query "Quantum mechanics and general relativity can be unified". Under CWA, it will return false because at present we do not know whether quantum mechanics and general relativity can be unified. Under OWA, it will return "don't know". As we know, knowledge is not immutable, but will change or be corrected. Right now we are not sure about the relation between quantum mechanics and general relativity, so we should output "don't know". So in this case, knowledge base should apply OWA. \\
+  Let's analyze the specific differences between OWA and CWA further by introduceing another example. When making a sushi ontology, it is assumed that tomato can only be one type of thing. Now we have tomato is subsumed by vegetables and tomato is subsumed by fruit. Under CWA, an error will be returned because it will assume that vegetable and fruit are different things since they are listed. Under OWA, no error will occur, because it will assume vegetable is equivalent to fruit since tomato can only be one type of thing.
+
+\end{document}
