@@ -89,6 +89,7 @@ public class AppTestPizza extends TestCase {
 		assertTrue(results.contains(new QueryResult(nap, false, QueryType.SUBCLASSES)));
 		assertTrue(results.contains(new QueryResult(ven, false, QueryType.SUBCLASSES)));
 		assertTrue(results.contains(new QueryResult(real, true, QueryType.SUBCLASSES)));
+		printResults(results);
 		assertTrue(results.size() == 3);
 	}
 
@@ -101,7 +102,7 @@ public class AppTestPizza extends TestCase {
 	public void testInstancesWithPizza() {
 		OWLClassExpression exp = queryApp.parseClassExpression("Country");
 		Set<QueryResult> results = queryApp.performQuery(exp, QueryType.INSTANCES);
-		printResults(results);
+		//printResults(results);
 		assertTrue(results.contains(new QueryResult(america, true, QueryType.INSTANCES)));
 		assertTrue(results.contains(new QueryResult(germany, true, QueryType.INSTANCES)));
 		assertTrue(results.contains(new QueryResult(france, true, QueryType.INSTANCES)));

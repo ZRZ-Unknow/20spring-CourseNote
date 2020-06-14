@@ -11,10 +11,12 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.reasoner.InferenceType;
+import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
@@ -46,17 +48,56 @@ public class CW5 {
 		switch (type) {
 		case EQUIVALENTCLASSES:
 			/// Use the reasoner to query for equivalent classes and add the appropriate query results
+			for (OWLClass ocl : r.getEquivalentClasses(exp)){
+				if (ocl.isOWLNothing()) continue;
+				if (r.getBottomClassNode().contains(ocl)) continue;
+				QueryResult qr = new QueryResult(ocl, true, type);
+				results.add(qr);
+			}
 			break;
 		case INSTANCES:
 			/// Use the reasoner to query for direct and indirect instances (separately) and add the appropriate query results
+			Set<OWLNamedIndividual> ins_tmp = new HashSet<OWLNamedIndividual>();
+			for (Node<OWLNamedIndividual> node_ocl : r.getInstances(exp,true)){
+				for (OWLNamedIndividual ocl : node_ocl) {
+				    QueryResult qr = new QueryResult(ocl, true, type);
+					results.add(qr);
+					ins_tmp.add(ocl);
+				}
+			}
+			for (Node<OWLNamedIndividual> node_ocl : r.getInstances(exp,false)){
+				for (OWLNamedIndividual ocl : node_ocl) {
+					if (ins_tmp.contains(ocl)) continue;
+				    QueryResult qr = new QueryResult(ocl, false, type);
+					results.add(qr);
+				}
+			}
 			break;
 		case SUBCLASSES:
 			/// Use the reasoner to query for direct and indirect sub-classes (separately) and add the appropriate query results
+			Set<OWLClass> sub_tmp = new HashSet<OWLClass>();
+			for (Node<OWLClass> node_ocl : r.getSubClasses(exp,true)){
+				for (OWLClass ocl : node_ocl) {
+					if (ocl.isOWLNothing()) continue;
+					if (r.getBottomClassNode().contains(ocl)) continue;
+				    QueryResult qr = new QueryResult(ocl, true, type);
+					results.add(qr);
+					sub_tmp.add(ocl);
+				}
+			}
+			for (Node<OWLClass> node_ocl : r.getSubClasses(exp,false)){
+				for (OWLClass ocl : node_ocl) {
+					if (ocl.isOWLNothing()) continue;
+					if (r.getBottomClassNode().contains(ocl)) continue;
+					if (sub_tmp.contains(ocl)) continue;
+				    QueryResult qr = new QueryResult(ocl, false, type);
+					results.add(qr);
+				}
+			}	
 			break;
 		default:
 			break;
 		}
-
 		return results;
 	}
 	
