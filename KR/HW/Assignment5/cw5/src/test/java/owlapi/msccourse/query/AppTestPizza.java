@@ -89,7 +89,7 @@ public class AppTestPizza extends TestCase {
 		assertTrue(results.contains(new QueryResult(nap, false, QueryType.SUBCLASSES)));
 		assertTrue(results.contains(new QueryResult(ven, false, QueryType.SUBCLASSES)));
 		assertTrue(results.contains(new QueryResult(real, true, QueryType.SUBCLASSES)));
-		printResults(results);
+		//printResults(results);
 		assertTrue(results.size() == 3);
 	}
 

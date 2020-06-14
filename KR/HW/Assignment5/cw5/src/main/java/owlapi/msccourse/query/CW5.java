@@ -11,6 +11,7 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -105,6 +106,12 @@ public class CW5 {
 		OWLClass pizza = df.getOWLClass(IRI.create("http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza"));
 		boolean b = false;
 		/// IMPLEMENT: Use the reasoner to check whether exp is a valid Pizza expression! Return TRUE if it is.
+		for (Node<OWLClass> node_ocl : r.getSuperClasses(exp,true)){
+			if (node_ocl.contains(pizza))   b = true;
+		}
+		for (Node<OWLClass> node_ocl : r.getSuperClasses(exp,false)){
+			if (node_ocl.contains(pizza))   b = true;
+		}
 		return b;
 	}
 
@@ -112,6 +119,33 @@ public class CW5 {
 		OWLClass np = df.getOWLClass(IRI.create("http://www.co-ode.org/ontologies/pizza/pizza.owl#NamedPizza"));
 		Set<QueryResult> results_filtered = new HashSet<QueryResult>();
 		// Add to results filtered only those QueryResults that correspond to NamedPizzas
+		OWLClassExpression exp = parseClassExpression("NamedPizza");
+		Set<String> tmp = new HashSet<String>();
+		for (Node<OWLClass> node_ocl : r.getSubClasses(exp,true)){
+			for (OWLEntity ocl : node_ocl) {
+				tmp.add(ocl.toString());
+			}
+		}
+		for (Node<OWLClass> node_ocl : r.getSubClasses(exp,false)){
+			for (OWLEntity ocl : node_ocl) {
+				tmp.add(ocl.toString());
+			}
+		}
+		for (Node<OWLNamedIndividual> node_ocl : r.getInstances(exp,true)){
+			for (OWLNamedIndividual ocl : node_ocl) {
+			    tmp.add(ocl.toString());
+			}
+		}
+		for (Node<OWLNamedIndividual> node_ocl : r.getInstances(exp,false)){
+			for (OWLNamedIndividual ocl : node_ocl) {
+			    tmp.add(ocl.toString());
+			}
+		}
+		for (QueryResult qr : results) {
+			if (tmp.contains(qr.getEntity().toString())) {
+				results_filtered.add(qr);
+			}
+		}
 		return results_filtered;
 	}
 
